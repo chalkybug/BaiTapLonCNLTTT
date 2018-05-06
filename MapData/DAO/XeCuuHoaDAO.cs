@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MapData.DAO
 {
-   public class XeCuuHoaDAO
+    public class XeCuuHoaDAO
     {
         private XeCuuHoaDAO() { }
 
@@ -27,7 +27,7 @@ namespace MapData.DAO
                         instance = new XeCuuHoaDAO();
                     }
                 }
-              
+
                 return instance;
             }
 
@@ -37,7 +37,7 @@ namespace MapData.DAO
             }
         }
 
-      
+
         public List<XeCuuHoa> GetList()
         {
             List<XeCuuHoa> list = new List<XeCuuHoa>();
@@ -69,7 +69,7 @@ namespace MapData.DAO
         }
         public int Update(int id, string name, int idTramCuuHoa, float capacity, float maxHeight, string size, string status)
         {
-           string query = $"UPDATE dbo.XeCuuHoa SET	name=N'{name}',idTramCuuHoa={idTramCuuHoa},capacity={capacity},maxHeight={maxHeight},size='{size}',status='{status}'  WHERE id ={id}";
+            string query = $"UPDATE dbo.XeCuuHoa SET	name=N'{name}',idTramCuuHoa={idTramCuuHoa},capacity={capacity},maxHeight={maxHeight},size='{size}',status='{status}' WHERE id ={id}";
 
             DataProvider.Instance.ExecuteNonQuery(query);
 

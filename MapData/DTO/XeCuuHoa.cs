@@ -47,5 +47,7 @@ namespace MapData.DTO
             this.status = row["status"].ToString();
         }
 
+        public XeCuuHoa() { } // cần thêm để tránh giá trị null
+
     }
 }

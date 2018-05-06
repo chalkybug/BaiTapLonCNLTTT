@@ -43,7 +43,7 @@ namespace MapData.DTO
             this.lat = float.Parse(row["lat"].ToString());
             this.lng = float.Parse(row["lng"].ToString());
         }
-
+        public TruNuoc() { }
     }
 
 }
