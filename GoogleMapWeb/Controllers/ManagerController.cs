@@ -1,5 +1,7 @@
-﻿using GoogleMapWeb.Models;
+﻿
+using GoogleMapWeb.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -10,6 +12,7 @@ namespace GoogleMapWeb.Controllers
 {
     public class ManagerController : Controller
     {
+        public string baseAddress = "http://localhost:8177/api/";
         // GET: Manager
         public ActionResult Index()
         {
@@ -17,9 +20,9 @@ namespace GoogleMapWeb.Controllers
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:8177/api/");
+                client.BaseAddress = new Uri(baseAddress);
                 //HTTP GET
-                var responseTask = client.GetAsync("Manager");
+                var responseTask = client.GetAsync("damchay");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -32,10 +35,8 @@ namespace GoogleMapWeb.Controllers
                 }
                 else //web api sent error response 
                 {
-                    //log response status here..
-
-                  ///  students = Enumerable.Empty<DamChay>();
-
+                    //log response status here..    
+                    
                     ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
                 }
             }

@@ -32,15 +32,15 @@ namespace GoogleMapWeb.Models
         }
         public DamChay(DataRow row)
         {
-            this.id = id;
-            this.level = level;
-            this.city = city;
-            this.county = county;
-            this.address = address;
-            this.damages = damages;
-            this.date = date;
-            this.lat = lat;
-            this.lng = lng;
+            this.id = int.Parse(row["id"].ToString());
+            this.level = int.Parse(row["level"].ToString());
+            this.city = row["city"].ToString();
+            this.county = row["county"].ToString();
+            this.address = row["address"].ToString();
+            this.damages = float.Parse(row["damages"].ToString());
+            this.date = DateTime.Parse(row["date"].ToString());
+            this.lat = float.Parse(row["lat"].ToString());
+            this.lng = float.Parse(row["lng"].ToString());
         }
         public DamChay() { }
     }
