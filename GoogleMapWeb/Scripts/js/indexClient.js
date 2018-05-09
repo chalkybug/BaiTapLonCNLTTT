@@ -137,9 +137,9 @@
             dataType: 'text',
             data: {
                 //city, county, address, lat, lng
-                city: $('#txtAddress').val(),
+                city: $('#txtCity').val(),
                 county: $('#txtCounty').val(),
-                address: $('#txtCity').val(),
+                address: $('#txtAddress').val(),
                 lat: latFinal,
                 lng: lngFinal,
 

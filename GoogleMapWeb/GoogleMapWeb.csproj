@@ -220,6 +220,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\indexAdmin.js" />
     <Content Include="Scripts\js\indexClient.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
@@ -272,9 +273,11 @@
     <Content Include="Views\TruNuoc\Create.cshtml" />
     <Content Include="Views\TruNuoc\Edit.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
+    <Content Include="Views\Manager\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\icon\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
