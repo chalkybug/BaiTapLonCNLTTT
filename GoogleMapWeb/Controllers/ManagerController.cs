@@ -16,32 +16,7 @@ namespace GoogleMapWeb.Controllers
         // GET: Manager
         public ActionResult Index()
         {
-            List<DamChay> students = null;
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(baseAddress);
-                //HTTP GET
-                var responseTask = client.GetAsync("damchay");
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<List<DamChay>>();
-                    readTask.Wait();
-
-                    students = readTask.Result;
-                }
-                else //web api sent error response 
-                {
-                    //log response status here..    
-                    
-                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                }
-            }
-
-            return View(students);
+            return View();
         }
     }
 }
