@@ -55,9 +55,6 @@
     // end susgest textbox  
 
     // add marker on click
-
-    var listColor = ['#FF0000', '#1582ff', '#00ff0d']
-    var indexColor = 0;
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
     });
@@ -90,8 +87,10 @@
                         }
                     }
                 });
+                var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
+
                 var infowindow = new google.maps.InfoWindow({
-                    content: element.address + element.county + element.city
+                    content: contentInfoWindow
                 });
                 marker.addListener('click', function () {
                     infowindow.open(map, marker);
@@ -140,4 +139,129 @@
     //     }
     // });
     // directionsDisplay.setMap(map)
+}
+
+function handle(damchay) {
+
+    console.log(damchay.id);
+    var latDamChay = 0;
+    var lngDamChay = 0;
+
+
+    var geoCode = {
+        lat: 21.036237,
+        lng: 105.790583
+    };
+    var marker = new google.maps.Marker({
+        map: map,
+        position: geoCode
+    });
+
+    //init map
+    var element = document.getElementById('map'); // chỉ ra element cần tạo
+    var map = new google.maps.Map(element, {
+        zoom: 12,
+        center: geoCode,
+
+    });
+
+    // lấy lat lng của đám cháy
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8177/api/BaoChay",
+        dataType: 'json',
+        success: function (data) {
+            data.forEach(element => {
+              
+                if (element.id == damchay.id) {
+                 
+                    latDamChay = element.lat;
+                    lngDamChay = element.lng;
+
+                    // set marker damchay
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: {
+                            lat: element.lat,
+                            lng: element.lng
+                        },
+                        animation: google.maps.Animation.DROP,
+                        icon: {
+                            url: "../Content/icon/fire.png",
+                            scaledSize: {
+                                width: 30,
+                                height: 40
+                            }
+                        }
+                    });
+                    var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentInfoWindow
+                    });
+                    marker.addListener('click', function () {
+                        infowindow.open(map, marker);
+                    });
+
+                }
+
+            });
+
+        },
+        error: function (xhr, status, err) {
+            console.log(err + "");
+
+        }
+    });
+    // show trạm cứu hỏa
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8177/api/tramcuuhoa",
+        dataType: 'json',
+        success: function (data) {
+            data.forEach(element => {
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: {
+                        lat: element.lat,
+                        lng: element.lng
+                    },
+                    animation: google.maps.Animation.DROP,
+                    icon: {
+                        url: "../Content/icon/firestation.png",
+                        scaledSize: {
+                            width: 30,
+                            height: 40
+                        }
+                    }
+                });
+
+                var contentInfoWindow = "<h6>" + element.name + " " + element.address + "</h6>";
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentInfoWindow
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+                // show data on table
+
+                TinhQuangDuong(latDamChay, lngDamChay, element.lat, element.lng, element.name, element.address, element.phone);
+
+            })
+            // call function
+
+        },
+        error: function (xhr, status, err) {
+            console.log(err + "");
+
+        }
+    });
+
+}
+
+
+function TinhQuangDuong(lat1, lng1, lat2, lng2, name, address, phone) {
+    var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lng1), new google.maps.LatLng(lat2, lng2));
+    $('#datarow').append("<tr><td>" + name + " " + address + "</td> <td>" + phone + " </td><td>" + distance / 1000 + " </td></tr>");
 }
