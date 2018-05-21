@@ -50,13 +50,13 @@ namespace MapData.BUS
             return BaoChayDAO.Instance.ShowTable();
         }
 
-        public int Create(string city, string county, string address, float lat, float lng)
+        public int Create(string city, string county, string address, float lat, float lng, string image)
         {
-            return BaoChayDAO.Instance.Create( city, county, address, lat, lng);
+            return BaoChayDAO.Instance.Create( city, county, address, lat, lng,image);
         }
-        public int Update(int id, string city, string county, string address, float lat, float lng)
+        public int Update(int id, string city, string county, string address, float lat, float lng, string image)
         {
-            return BaoChayDAO.Instance.Update(id, city, county, address, lat, lng);
+            return BaoChayDAO.Instance.Update(id, city, county, address, lat, lng,image);
         }
         public int Delete(int id)
         {

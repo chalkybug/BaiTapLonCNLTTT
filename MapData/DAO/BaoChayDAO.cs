@@ -59,17 +59,17 @@ namespace MapData.DAO
             return data;
         }
 
-        public int Create(string city, string county, string address, float lat, float lng)
+        public int Create(string city, string county, string address, float lat, float lng,string image)
         {
-            string query = $"INSERT dbo.BaoChay VALUES  ( N'{city}', N'{county}', N'{address}', {lat}, {lng} )";
+            string query = $"INSERT dbo.BaoChay VALUES  ( N'{city}', N'{county}', N'{address}', {lat}, {lng},'{image}' )";
 
             DataProvider.Instance.ExecuteNonQuery(query);
 
             return 1;
         }
-        public int Update(int id, string city, string county, string address, float lat, float lng)
+        public int Update(int id, string city, string county, string address, float lat, float lng, string image)
         {
-            string query = $"UPDATE dbo.BaoChay SET ,city=N'{city}',county=N'{county}',address=N'{address}',lat={lat},lng={lng} WHERE id={id}";
+            string query = $"UPDATE dbo.BaoChay SET ,city=N'{city}',county=N'{county}',address=N'{address}',lat={lat},lng={lng},image='{image}' WHERE id={id}";
             DataProvider.Instance.ExecuteNonQuery(query);
             return 1;
         }

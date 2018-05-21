@@ -50,13 +50,13 @@ namespace MapData.BUS
             return DamChayDAO.Instance.ShowTable();
         }
 
-        public int Create(int level, string city, string county, string address, float damages, DateTime date, float lat, float lng)
+        public int Create(int level, string city, string county, string address, float damages, DateTime date, float lat, float lng, string image)
         {
-            return DamChayDAO.Instance.Create(level, city, county, address, damages, date, lat, lng);
+            return DamChayDAO.Instance.Create(level, city, county, address, damages, date, lat, lng,image);
         }
-        public int Update(int id, int level, string city, string county, string address, float damages, DateTime date, float lat, float lng)
+        public int Update(int id, int level, string city, string county, string address, float damages, DateTime date, float lat, float lng, string image)
         {
-            return DamChayDAO.Instance.Update(id, level, city, county, address, damages, date, lat, lng);
+            return DamChayDAO.Instance.Update(id, level, city, county, address, damages, date, lat, lng,image);
         }
         public int Delete(int id)
         {

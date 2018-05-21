@@ -125,10 +125,32 @@
     // end susgest textbox 
 
     // submit
+    /// thêm đoạn này để test upload file lên server thông qua string base64
+    document.getElementById("txtImage").addEventListener("change", readFile);
+    var srtBase64;
+    function readFile() {
+        console.log("radl")
+
+        console.log("rad2l")
+        var reader = new FileReader();
+        var file = document.querySelector('input[type=file]').files[0];
+        reader.addEventListener("load", function (e) {
+            document.getElementById("img").src = e.target.result;
+            
+            srtBase64=e.target.result;
+          //  console.log(srtBase64);
+        });
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+
+    }
 
 
 
-
+    // end
     $("#submit").click(function () {
 
         $.ajax({
@@ -142,7 +164,7 @@
                 address: $('#txtAddress').val(),
                 lat: latFinal,
                 lng: lngFinal,
-
+                image: srtBase64,
             },
             success: function (data) {
                 alert("Gửi báo cháy thành công")
@@ -158,5 +180,9 @@
     });
 
     //end submit
+
+
+
+
 
 }

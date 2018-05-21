@@ -58,12 +58,12 @@
         <div id="map"></div>
         <div class="container space">
 
-            <table class="table table-bordered acctionHide">
+            <table style="display:none" id="myTable" class="table table-bordered acctionHide">
                 <thead>
                     <tr>
-                        <th>Tên</th>
-                        <th>SĐT</th>
-                        <th>Khoảng Cách</th>
+                        <th onclick="sortTable(0)">Tên</th>
+                        <th onclick="sortTable(1)">SĐT</th>
+                        <th onclick="sortTable(2)">Khoảng Cách</th>
                     </tr>
                 </thead>
                 <tbody id="datarow">

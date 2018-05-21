@@ -1,6 +1,7 @@
-﻿function initMap() {
+﻿
+function initMap() {
     //init lat lng
-
+    
     var geoCode = {
         lat: 21.036237,
         lng: 105.790583
@@ -65,7 +66,7 @@
         marker.setVisible(true);
 
     }
-
+   
     $.ajax({
         type: 'GET',
         url: "http://localhost:8177/api/baochay",
@@ -213,7 +214,9 @@ function handle(damchay) {
 
         }
     });
-    // show trạm cứu hỏa
+
+
+    // show fire station
     $.ajax({
         type: 'GET',
         url: "http://localhost:8177/api/tramcuuhoa",
@@ -256,12 +259,72 @@ function handle(damchay) {
             console.log(err + "");
 
         }
-    });
+    }); // end ajax show fire station
 
 }
 
 
 function TinhQuangDuong(lat1, lng1, lat2, lng2, name, address, phone) {
+    //show table
+    $('#myTable').removeAttr("style");
     var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lng1), new google.maps.LatLng(lat2, lng2));
     $('#datarow').append("<tr><td>" + name + " " + address + "</td> <td>" + phone + " </td><td>" + distance / 1000 + " </td></tr>");
+    
 }
+
+
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+

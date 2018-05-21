@@ -18,8 +18,9 @@ namespace MapData.DTO
         public DateTime date { get; set; }
         public float lat { get; set; }
         public float lng { get; set; }
+        public string image { get; set; }
 
-        public DamChay(int id, int level, string city, string county, string address, float damages, DateTime date, float lat, float lng)
+        public DamChay(int id, int level, string city, string county, string address, float damages, DateTime date, float lat, float lng,string image)
         {
             this.id = id;
             this.level = level;
@@ -30,6 +31,7 @@ namespace MapData.DTO
             this.date = date;
             this.lat = lat;
             this.lng = lng;
+            this.image = image;
         }
         public DamChay(DataRow row)
         {
@@ -42,6 +44,7 @@ namespace MapData.DTO
             this.date = DateTime.Parse(row["date"].ToString());
             this.lat = float.Parse(row["lat"].ToString());
             this.lng = float.Parse(row["lng"].ToString());
+            this.image = row["image"].ToString();
         }
         public DamChay() { }
     }

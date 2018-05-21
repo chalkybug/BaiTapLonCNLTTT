@@ -59,17 +59,17 @@ namespace MapData.DAO
             return data;
         }
 
-        public int Create(int level, string city, string county, string address, float damages, DateTime date, float lat, float lng)
+        public int Create(int level, string city, string county, string address, float damages, DateTime date, float lat, float lng, string image)
         {
-            string query = $"INSERT dbo.DamChay VALUES  ({level} , N'{city}', N'{county}', N'{address}', {damages}, '{date}', {lat}, {lng} )";
+            string query = $"INSERT dbo.DamChay VALUES  ({level} , N'{city}', N'{county}', N'{address}', {damages}, '{date}', {lat}, {lng},'{image}' )";
 
             DataProvider.Instance.ExecuteNonQuery(query);
 
             return 1;
         }
-        public int Update(int id, int level, string city, string county, string address, float damages, DateTime date, float lat, float lng)
+        public int Update(int id, int level, string city, string county, string address, float damages, DateTime date, float lat, float lng, string image)
         {
-            string query = $"UPDATE dbo.DamChay SET level={level},city=N'{city}',county=N'{county}',address=N'{address}',damages={damages},date='{date}',lat={lat},lng={lng} WHERE id={id}";
+            string query = $"UPDATE dbo.DamChay SET level={level},city=N'{city}',county=N'{county}',address=N'{address}',damages={damages},date='{date}',lat={lat},lng={lng},image='{image}' WHERE id={id}";
             DataProvider.Instance.ExecuteNonQuery(query);
             return 1;
         }

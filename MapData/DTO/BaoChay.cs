@@ -15,8 +15,9 @@ namespace MapData.DTO
         public string address { get; set; }
         public float lat { get; set; }
         public float lng { get; set; }
+        public string image { get; set; }
 
-        public BaoChay(int id, string city, string county, string address, float lat, float lng)
+        public BaoChay(int id, string city, string county, string address, float lat, float lng,string image)
         {
             this.id = id;
 
@@ -25,6 +26,7 @@ namespace MapData.DTO
             this.address = address;
             this.lat = lat;
             this.lng = lng;
+            this.image = image; 
         }
         public BaoChay(DataRow row)
         {
@@ -34,6 +36,7 @@ namespace MapData.DTO
             this.address = row["address"].ToString();
             this.lat = float.Parse(row["lat"].ToString());
             this.lng = float.Parse(row["lng"].ToString());
+            this.image = row["image"].ToString();
         }
         public BaoChay() { }
     }

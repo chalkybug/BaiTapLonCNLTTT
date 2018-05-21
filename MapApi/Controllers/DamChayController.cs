@@ -26,7 +26,7 @@ namespace MapApi.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest("Not a valid model");
-            DamChayBUS.Instance.Create(x.level, x.city, x.county, x.address, x.damages, x.date, x.lat, x.lng);
+            DamChayBUS.Instance.Create(x.level, x.city, x.county, x.address, x.damages, x.date, x.lat, x.lng, x.image);
             return Ok();
         }
 
@@ -34,7 +34,7 @@ namespace MapApi.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest("Not a valid data");
-            DamChayBUS.Instance.Update(x.id,x.level, x.city, x.county, x.address, x.damages, x.date, x.lat, x.lng);
+            DamChayBUS.Instance.Update(x.id, x.level, x.city, x.county, x.address, x.damages, x.date, x.lat, x.lng, x.image);
             return Ok();
         }
        
