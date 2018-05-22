@@ -66,16 +66,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmDamChay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmDamChay.designer.cs">
+      <DependentUpon>frmDamChay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMapBaoChay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMapBaoChay.designer.cs">
+      <DependentUpon>frmMapBaoChay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTramCuuHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTramCuuHoa.designer.cs">
+      <DependentUpon>frmTramCuuHoa.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmDamChay.resx">
+      <DependentUpon>frmDamChay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMapBaoChay.resx">
+      <DependentUpon>frmMapBaoChay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTramCuuHoa.resx">
+      <DependentUpon>frmTramCuuHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,6 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapData\MapData.csproj">
+      <Project>{96D1AA30-4707-4D65-9A0F-B1F32375B8AD}</Project>
+      <Name>MapData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

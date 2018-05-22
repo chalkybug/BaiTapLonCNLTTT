@@ -12,7 +12,7 @@ namespace MapData.DAO
     {
         private static volatile DataProvider instance;
         private DataProvider() { }
-        private string str = @"Data Source=.\SQLEXPRESS;Initial Catalog=qlPCCC;Integrated Security=True";
+        private string str = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=qlPCCC;Integrated Security=True";
         static object key = new object();
         public static DataProvider Instance
         {
