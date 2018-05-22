@@ -12,9 +12,10 @@ namespace GoogleMapWeb.Controllers
     {
         // GET: XeCuuHoa
         public string baseAddress = "http://localhost:8177/api/";
+        List<XeCuuHoa> listXeCuuHoa = null;
         public ActionResult Index()
         {
-            List<XeCuuHoa> item = null;
+           
 
             using (var client = new HttpClient())
             {
@@ -29,7 +30,7 @@ namespace GoogleMapWeb.Controllers
                     var readTask = result.Content.ReadAsAsync<List<XeCuuHoa>>();
                     readTask.Wait();
 
-                    item = readTask.Result;
+                    listXeCuuHoa = readTask.Result;
                 }
                 else //web api sent error response 
                 {
@@ -39,11 +40,12 @@ namespace GoogleMapWeb.Controllers
                 }
             }
 
-            return View(item);
+            return View(listXeCuuHoa);
         }
 
         public ActionResult Create()
         {
+           // ViewBag.DropdownTramCuuHoa = new SelectList(listXeCuuHoa, "id", "name");
             return View();
         }
 

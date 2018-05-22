@@ -1,9 +1,11 @@
-﻿create database qlPCCC
+﻿CREATE DATABASE qlPCCC
+GO
+
 USE qlPCCC
 GO
 
 CREATE TABLE TramCuuHoa(
-	id INT identity PRIMARY KEY,
+	id INT  IDENTITY PRIMARY KEY,
 	name NVARCHAR(100) NOT NULL,
 	phone VARCHAR(11) NOT NULL,
 	address NVARCHAR(100) NOT NULL,
@@ -12,7 +14,7 @@ CREATE TABLE TramCuuHoa(
 );
 go
 CREATE TABLE XeCuuHoa(
-	id INT	identity PRIMARY KEY,
+	id INT IDENTITY	PRIMARY KEY,
 	name NVARCHAR(100) NOT NULL,
 	idTramCuuHoa INT REFERENCES dbo.TramCuuHoa(id), -- thuộc trạm cứu hỏa nào
 	capacity FLOAT NOT NULL, -- dung tích chứa được bao nhiêu lít
@@ -22,7 +24,7 @@ CREATE TABLE XeCuuHoa(
 );
 go
 CREATE TABLE DamChay(
-	id INT	identity PRIMARY KEY,
+	id INT IDENTITY	PRIMARY KEY,
 	level INT NOT NULL  DEFAULT 1,
 	city NVARCHAR(50) NOT NULL DEFAULT 'Hà Nội',
 	county NVARCHAR(50) NOT NULL DEFAULT 'Cầu Giấy',
@@ -33,20 +35,134 @@ CREATE TABLE DamChay(
 	lng FLOAT NOT NULL,
 
 );
-
+GO
+ALTER TABLE dbo.DamChay ADD image VARCHAR(MAX) 
 go
 CREATE TABLE TruNuoc(
 	id INT IDENTITY	PRIMARY KEY,
-	city NVARCHAR(50) NOT NULL DEFAULT 'Hà Nội',
-	county NVARCHAR(50) NOT NULL DEFAULT 'Cầu Giấy',
+	city NVARCHAR(50) DEFAULT 'Hà Nội',
+	county NVARCHAR(50) DEFAULT 'Cầu Giấy',
 	address NVARCHAR(100) NOT NULL,
 	lat FLOAT NOT NULL,
 	lng FLOAT NOT NULL,
 );
 
 
-go
-insert dbo.TruNuoc values (N'Hà Nội', N'Việt Nam', N'Khách sạn Bảo Nam- Đường Phùng Hưng', 20.9631177564783, 105.796194076538);
+CREATE TABLE Account(
+	id INT  IDENTITY PRIMARY KEY,
+	username VARCHAR(100) NOT NULL DEFAULT 'admin',
+	password VARCHAR(100) NOT NULL DEFAULT '123',
+	displayName NVARCHAR(100) NOT NULL DEFAULT 'noname'
+);
+GO
+
+CREATE TABLE BaoChay(
+	id INT IDENTITY	PRIMARY KEY,
+	city NVARCHAR(50) DEFAULT 'Hà Nội',
+	county NVARCHAR(50)  DEFAULT 'Cầu Giấy',
+	address NVARCHAR(100) NOT NULL,
+	lat FLOAT NOT NULL,
+	lng FLOAT NOT NULL,
+);
+ALTER TABLE dbo.BaoChay ADD image VARCHAR(MAX) 
+
+GO
+--//////////////////////////////////////////////////// INSERT
+--- đám cháy
+--- nam từ liêm
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Sân Vận Động Mĩ Đình Đường Lê Đức Thọ, Mỹ Đình' , 200 , '2018-05-15' ,  21.0203787047367 , 105.763943195343  )
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trại Giam Hỏa Lò, Phúc Diễn, Xuân Phương' , 200 , '2018-03-15' ,  21.0229024288996 , 105.752291679382 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Bảo tàng hà nội ,Phạm Hùng, Mễ Trì' , 400 , '2018-02-15' ,  21.0100430077698 , 105.786334276199 )
+INSERT dbo.DamChay VALUES  ( 4 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trung tâm hội nghị quốc gia Phạm Hùng, Mễ Trì' , 300 , '2018-01-15' ,  21.0064173319907 , 105.787128210068 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Liên đoàn bóng đá việt nam, phú đô' , 300 , '2018-02-10' ,  21.0163126148461 , 105.769275426865 )
+--
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trường THPT Nguyễn Thị Minh Khai, Phúc Diễn' , 600 , '2018-03-15' ,  21.0467054546092 , 105.751047134399  )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Ký túc xá Mỹ Đình, Hàm Nghi, Mỹ Đình' , 200 , '2018-02-19' ,  21.0342736797851 , 105.766394734383 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Chi cục thuế Quận Nam Từ Liêm, Số 4 Nguyễn Cơ Thạch Quận Nam, Mỹ Đình ' , 400 , '2018-02-22' ,  21.038379334347 , 105.767183303833 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trung Tâm Viettel Nam Từ Liêm, 280 Hồ Tùng Mậu, Cầu Diễn' , 300 , '2018-03-11' ,  21.0409878682762 , 105.765670537949 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Ngõ 136 Hồ Tùng Mậu' , 300 , '2018-03-10' ,  21.0407275176138 , 105.768052339554 )
+
+--- cầu giấy
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Chợ Nam Trung Yên ' , 300 , '2018-03-11' ,  21.0128172913299, 105.788340568542 )
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Keangnam Hanoi Landmark Tower, Phạm Hùng' , 900 , '2018-03-11' ,  21.0167532801909, 105.783877372742 )
+INSERT dbo.DamChay VALUES  ( 4 ,  N'Hà Nội' , N'Cầu Giấy' , N'Trường Đại học Thương mại ,79 Hồ Tùng Mậu, Mai Dịch' , 400 , '2018-03-24' ,  21.0373979930592, 105.774908065796 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Truyền Hình CAND ANTV, Lê Đức Thọ, Mai Dịch' , 400 , '2018-03-21' ,  21.0370274849735, 105.771482884884 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'Bệnh viện 198 , 9 Trần Bình, Mai Dịch,' , 500 , '2018-03-26' , 21.0334124793512, 105.778840184212 )
+--
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Trường Cao đẳng Múa Việt Nam , Mai Dịch ' , 300 , '2018-03-17', 21.0381390064661, 105.775541067123 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Ngõ 76 Mai Dịch' , 100 , '2018-03-24' ,  21.0408076255584, 105.775964856148 )
+
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Học viện Báo chí và Tuyên truyền, 36 Xuân Thủy, Dịch Vọng Hậu' , 400 , '2018-03-24' , 21.0365618451266 , 105.788823366165 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'KFC Cầu Giấy , 372-374 Cầu Giấy, Dịch Vọng' , 200 , '2018-03-11' ,  21.0360135898928, 105.79142510891 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'Chợ Nghĩa Tân,' , 500 , '2018-03-24' , 21.0448780537743, 105.794603526592 )
+GO
+--------------------- Trạm Chữa Cháy
+ INSERT dbo.TramCuuHoa(name, phone, address, lat, lng )
+ VALUES  (N'Trạm cứu hỏa Xuân Thủy','0165252525',N'Cầu Giấy', 21.0366619828509, 105.786226987839)
+  INSERT dbo.TramCuuHoa( name, phone, address, lat, lng )
+ VALUES  (N'Trạm cứu hỏa Trần Đăng Ninh','0154245458',N'Cầu Giấy', 21.0340984359142, 105.792782306671)
+  INSERT dbo.TramCuuHoa( name, phone, address, lat, lng )
+ VALUES  (N'Trạm cứu hỏa Làng Phú Diễn','0985457457',N'Phú Diễn', 21.0535442406141, 105.761346817017)
+  INSERT dbo.TramCuuHoa( name, phone, address, lat, lng )
+ VALUES  (N'Trạm cứu hỏa Tân Mỹ','0165252525',N'Mỹ Đình 1', 21.0247250920038, 105.764951705933)
+  INSERT dbo.TramCuuHoa( name, phone, address, lat, lng )
+ VALUES  (N'Trạm cứu hỏa Trung Tâm Hội Nghị Quốc Gia','0165252525',N'Trần Duy Hưng', 21.0067578688239, 105.787761211395)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa chiếu phim quốc gia','0165252525',N'Láng Hạ', 105.787761211395, 105.815613269806)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa trung cấp nghề số 10','0165252525',N'Hoàng Văn Thái', 20.9977433965602, 105.820527076721)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa y dược cổ truyền','0165252525',N'Phùng Khoang', 20.9845512376912, 105.792599916458)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa nghĩa trang văn quán','0165252525',N'Nguyên Khuyến', 20.9748041182997, 105.789697766304)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa song phương','0165252525',N'Song Phương', 21.0137687485385, 105.690879821777)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa đại học lâm nghiệp','0165252525',N'Xuân Mai', 20.9116979444654, 105.57708978653)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa hỏa lò','0165252525',N'Hai Bà Trưng',21.0254160958163, 105.846598148346)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa rạp xiếc trung ương','0165252525',N'Trần Nhân Tông', 21.0169836274665, 105.842489004135)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa bảo tàng Hồ Chí Minh','0165252525',N'Lê Hồng Phong', 21.0350898128118, 105.8325111866)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa khu tập thể giáp bát','0165252525',N'Giải Phóng', 20.9824776488901, 105.840954780579)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa RoyalCity','0165252525',N'Nuyễn Trãi', 21.001389315361, 105.817469358444)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa làng trẻ hòa bình','0165252525',N'Lê Văn Thiêm', 20.9991657161371, 105.805013179779)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa khách sạn Seoul','0165252525',N'Nguyễn Chánh', 21.0085857370728, 105.798296928406)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  (N'Trạm cứu hỏa trung tâm dạy nghề ','0165252525',N'Triều Khúc', 20.9860137516128, 105.786226987839)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa nguyễn xiển','0165252525',N'Nguyễn Xiển Xa La', 20.9673405807054, 105.802679657936)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa văn điển','0165252525',N'Phan Trọng Tuệ', 20.9458695627412, 105.832028388977)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa bách khoa','0165252525',N'Đại Cồ Việt', 21.0079998201002, 105.84653377533)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa gas station','0165252525',N'Tạ Quang Bửu', 21.0019051455823, 105.849301815033)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa bạch mai','0165252525',N'Bạch Mai', 20.999586399612, 105.850897729397)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa nhà tang lễ thanh nhàn','0165252525',N'Trần Khát Chân', 21.0053907088931, 105.858796834946)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa lãng yên','0165252525',N'Nguyễn Khoái', 21.0366619828509, 105.786226987839)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa bảo tàng phụ nữ','0165252525',N'Lý Thường Kiệt', 21.0227021348919, 105.852638483047)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa lý thái tổ','0165252525',N'Lê Thạch', 21.027133576924, 105.854934453964)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  ( N'Trạm cứu hỏa gia lư','0165252525',N'Đinh Kiệt', 21.0330770103931, 105.851935744286)
+  INSERT dbo.TramCuuHoa(  name, phone, address, lat, lng )
+ VALUES  (N'Trạm cứu hỏa lãn ông','0165252525',N'Lãn Ông', 21.0352575451193, 105.849551260471)
+
+ GO
+ 
+ ------ trụ nước
+
+ insert dbo.TruNuoc values (N'Hà Nội', N'Việt Nam', N'Khách sạn Bảo Nam- Đường Phùng Hưng', 20.9631177564783, 105.796194076538);
 insert dbo.TruNuoc values (N'Hà Nội', N'Việt Nam', N'Keangnam Hà Nội Landmark Tower- Đường Phạm Hùng', 21.0162925845722, 105.783340930939);
 insert dbo.TruNuoc values (N'Hà Nội', N'Việt Nam', N'Nhà hàng vịt nướng Mai Hường- Đường quốc lộ 1A', 20.8227024945699, 105.882319808006);
 insert dbo.TruNuoc values (N'Hà Nam', N'Việt Nam', N'Ga Phủ Lý- Đường Lê Hoàn', 20.540414, 105.912754);
@@ -77,9 +193,9 @@ insert dbo.TruNuoc values (N'Bắc Giang', N'Việt Nam', N'Cửa hàng điện 
 insert dbo.TruNuoc values (N'Lạng Sơn', N'Việt Nam', N'Trường THCS xã Nhân Lý- Chi Lăng', 21.700196, 106.657656);
 insert dbo.TruNuoc values (N'Thái Bình', N'Việt Nam', N'Cửa hàng bán đồ điện tử Lan Lừng- Hưng Hà', 20.590041, 106.262115);
 
+GO
 
-go
-
+---- xe cứu hỏa
 insert dbo.XeCuuHoa values (N'xe 1', 3, 8000, 80, 'l', 'free');
 insert dbo.XeCuuHoa values (N'xe 2', 2, 5000, 50, 'm', 'busy');
 insert dbo.XeCuuHoa values (N'xe 3', 1, 8000, 80, 'l', 'free');
@@ -145,47 +261,32 @@ insert dbo.XeCuuHoa values (N'xe 62', 10, 3000, 30, 's', 'busy');
 insert dbo.XeCuuHoa values (N'xe 63', 7, 5000, 50, 'm', 'free');
 insert dbo.XeCuuHoa values (N'xe 64', 8, 5000, 50, 'm', 'busy');
 insert dbo.XeCuuHoa values (N'xe 65', 13, 3000, 30, 's', 'free');
-go
+GO
+
+--------query
+/*
 
 
---tạo thủ tục thêm sửa xóa bảng XeCuuHoa
-go
-create proc addXCH(@ten nvarchar(100), @idTCH int, @capa float, @maxH float, @size varchar(10), @stt varchar(10))
-as
-begin
-	insert into XeCuuHoa
-	values (@ten, @idTCH, @capa, @maxH, @size, @stt)
-end
---
-go
-create proc delXCH(@ten nvarchar(100), @idTCH int, @capa float, @maxH float, @size varchar(10), @stt varchar(10))
-as
-begin
-	delete from XeCuuHoa
-	where idTramCuuHoa=@idTCH
-end
---
-go
-create proc updateXCH (@ten nvarchar(100), @idTCH int, @capa float, @maxH float, @size varchar(10), @stt varchar(10))
-as
-begin
-	update XeCuuHoa
-	set name=@ten, idTramCuuHoa=@idTCH, capacity=@capa, maxHeight=@maxH, size=@size, status=@stt
-	where idTramCuuHoa=@idTCH
-end
---tạo thủ tục thêm sửa xóa cho bảng TruNuoc
-go
-create proc addTN(@city nvarchar(100), @cou nvarchar(100), @addr nvarchar(150), @lat float, @inq float)
-as
-begin
-	insert into TruNuoc
-	values (@city, @cou, @addr, @lat, @inq)
-end
---
-go
-create proc delTN(@city nvarchar(100), @cou nvarchar(100), @addr nvarchar(150), @lat float, @inq float)
-as
-begin
-	delete from TruNuoc
-	where 
-end
+SELECT * FROM dbo.DamChay
+
+UPDATE dbo.DamChay SET level=3,city=N'Hà Nội',county=N'Cầu Giấy',address=N'Chợ Nghĩa Tân',damages=500,date='2018-03-24',lat=21.0448780537743,lng=105.794603526592 WHERE id=25
+
+GO
+SELECT * FROM dbo.TramCuuHoa
+GO
+UPDATE dbo.TramCuuHoa	SET name=N'',phone='',address=N'',lat=3,lng=4 WHERE id=2
+GO
+SELECT * FROM dbo.TruNuoc
+GO
+UPDATE dbo.TruNuoc SET city=N'',county=N'',address=N'',lat=,lng= WHERE id=
+SELECT * FROM dbo.XeCuuHoa
+GO
+UPDATE dbo.XeCuuHoa SET	name=N'xe 1',idTramCuuHoa=3,capacity=8000,maxHeight=80,size='l',status='fress' WHERE id=2
+
+
+*/
+
+
+
+
+-- test bảng báo cháy
