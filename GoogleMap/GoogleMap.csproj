@@ -41,6 +41,8 @@
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +53,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.5\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +70,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSetBaoCaoThietHai.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBaoCaoThietHai.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmBaoCaoThietHai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaoCaoThietHai.Designer.cs">
+      <DependentUpon>frmBaoCaoThietHai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBieuDoThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBieuDoThongKe.Designer.cs">
+      <DependentUpon>frmBieuDoThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDamChay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +105,12 @@
     <Compile Include="frmMapBaoChay.designer.cs">
       <DependentUpon>frmMapBaoChay.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongKe.Designer.cs">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTramCuuHoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +119,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBaoCaoThietHai.resx">
+      <DependentUpon>frmBaoCaoThietHai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBieuDoThongKe.resx">
+      <DependentUpon>frmBieuDoThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDamChay.resx">
       <DependentUpon>frmDamChay.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMapBaoChay.resx">
       <DependentUpon>frmMapBaoChay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKe.resx">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTramCuuHoa.resx">
       <DependentUpon>frmTramCuuHoa.cs</DependentUpon>
@@ -113,6 +149,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="rptBaoCaoThietHai.rdlc" />
+    <None Include="DataSetBaoCaoThietHai.xsc">
+      <DependentUpon>DataSetBaoCaoThietHai.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBaoCaoThietHai.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBaoCaoThietHai.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetBaoCaoThietHai.xss">
+      <DependentUpon>DataSetBaoCaoThietHai.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
