@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,6 +42,8 @@
       <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +54,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.5\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,17 +71,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmDamChay.cs">
+    <Compile Include="DataSetBaoCaoThietHai.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBaoCaoThietHai.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmBaoCaoThietHai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDamChay.designer.cs">
-      <DependentUpon>frmDamChay.cs</DependentUpon>
+    <Compile Include="frmBaoCaoThietHai.Designer.cs">
+      <DependentUpon>frmBaoCaoThietHai.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="frmMain2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="frmMain2.Designer.cs">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMap.Designer.cs">
+      <DependentUpon>frmMap.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMapBaoChay.cs">
       <SubType>Form</SubType>
@@ -84,25 +100,82 @@
     <Compile Include="frmMapBaoChay.designer.cs">
       <DependentUpon>frmMapBaoChay.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTramCuuHoa.cs">
+    <Compile Include="frmMapChonDiemTramCuuHoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTramCuuHoa.designer.cs">
-      <DependentUpon>frmTramCuuHoa.cs</DependentUpon>
+    <Compile Include="frmMapChonDiemTramCuuHoa.Designer.cs">
+      <DependentUpon>frmMapChonDiemTramCuuHoa.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmDamChay.resx">
-      <DependentUpon>frmDamChay.cs</DependentUpon>
+    <Compile Include="UserControlDamChay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlDamChay.Designer.cs">
+      <DependentUpon>UserControlDamChay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlHome.Designer.cs">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLienHe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLienHe.Designer.cs">
+      <DependentUpon>UserControlLienHe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlMap.Designer.cs">
+      <DependentUpon>UserControlMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlQuanLy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlQuanLy.Designer.cs">
+      <DependentUpon>UserControlQuanLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlThongKe.Designer.cs">
+      <DependentUpon>UserControlThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlThongKeBieuDo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlThongKeBieuDo.Designer.cs">
+      <DependentUpon>UserControlThongKeBieuDo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlThongKeDanhSach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlThongKeDanhSach.Designer.cs">
+      <DependentUpon>UserControlThongKeDanhSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlTramCuuHoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlTramCuuHoa.Designer.cs">
+      <DependentUpon>UserControlTramCuuHoa.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmBaoCaoThietHai.resx">
+      <DependentUpon>frmBaoCaoThietHai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="frmMain2.resx">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMap.resx">
+      <DependentUpon>frmMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMapBaoChay.resx">
       <DependentUpon>frmMapBaoChay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTramCuuHoa.resx">
-      <DependentUpon>frmTramCuuHoa.cs</DependentUpon>
+    <EmbeddedResource Include="frmMapChonDiemTramCuuHoa.resx">
+      <DependentUpon>frmMapChonDiemTramCuuHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,6 +186,45 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="rptBaoCaoThietHai.rdlc" />
+    <EmbeddedResource Include="UserControlDamChay.resx">
+      <DependentUpon>UserControlDamChay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlHome.resx">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLienHe.resx">
+      <DependentUpon>UserControlLienHe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlMap.resx">
+      <DependentUpon>UserControlMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlQuanLy.resx">
+      <DependentUpon>UserControlQuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlThongKe.resx">
+      <DependentUpon>UserControlThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlThongKeBieuDo.resx">
+      <DependentUpon>UserControlThongKeBieuDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlThongKeDanhSach.resx">
+      <DependentUpon>UserControlThongKeDanhSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlTramCuuHoa.resx">
+      <DependentUpon>UserControlTramCuuHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSetBaoCaoThietHai.xsc">
+      <DependentUpon>DataSetBaoCaoThietHai.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBaoCaoThietHai.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBaoCaoThietHai.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetBaoCaoThietHai.xss">
+      <DependentUpon>DataSetBaoCaoThietHai.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -29,7 +29,42 @@ namespace MapData.DAO
             }
 
         }
-
+        public DataTable GetData(string strSql)
+        {
+            using (SqlConnection connection = new SqlConnection(str))
+            {
+                SqlDataAdapter da = new SqlDataAdapter(strSql, connection);
+                DataTable dt = new DataTable();
+                if (ConnectionState.Closed == connection.State)
+                {
+                    connection.Open();
+                }
+                da.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+        }
+        public DataTable GetData(string NameProc, SqlParameter[] para)
+        {
+            using (SqlConnection connection = new SqlConnection(str))
+            {
+                SqlCommand cmd = new SqlCommand(NameProc, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (para != null)
+                    cmd.Parameters.AddRange(para);
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                if (ConnectionState.Closed == connection.State)
+                {
+                    connection.Open();
+                }
+                da.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+                
+        }
         // viết lại cái query xử lý thông qua provider
         public DataTable ExecuteQuery(string query, Object[] parameter = null)
         {

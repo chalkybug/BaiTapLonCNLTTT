@@ -11,7 +11,7 @@ namespace MapData.BUS
 {
    public class DamChayBUS
     {
-        private DamChayBUS() { }
+        public DamChayBUS() { }
 
         private static volatile DamChayBUS instance;
 

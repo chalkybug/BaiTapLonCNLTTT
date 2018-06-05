@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,12 +50,14 @@
   <ItemGroup>
     <Compile Include="BUS\BaoChayBUS.cs" />
     <Compile Include="BUS\DamChayBUS.cs" />
+    <Compile Include="BUS\ThongKeBUS.cs" />
     <Compile Include="BUS\TramCuuHoaBUS.cs" />
     <Compile Include="BUS\TruNuocBUS.cs" />
     <Compile Include="BUS\XeCuuHoaBUS.cs" />
     <Compile Include="DAO\BaoChayDAO.cs" />
     <Compile Include="DAO\DamChayDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\ThongKeDAO.cs" />
     <Compile Include="DAO\TramCuuHoaDAO.cs" />
     <Compile Include="DAO\TruNuocDAO.cs" />
     <Compile Include="DAO\XeCuuHoaDAO.cs" />

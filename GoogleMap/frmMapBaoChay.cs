@@ -132,5 +132,10 @@ namespace GoogleMap
             dataGridView1.Visible = true;
             ShowTramCuuHoa();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
