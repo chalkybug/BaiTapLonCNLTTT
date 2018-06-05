@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta city="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Link-->
+    <!--  <script src="js/tramcuuhoa.js"></script>-->
+
+    <!-- angular js-->
+    <script src="js/angular.min.js"></script>
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #ff1fe1;">
+        <a class="navbar-brand" href="#">Phòng cháy chữa cháy</a>
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./admin.html">Trang chủ
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./tramcuuhoa.html">Trạm Cứu Hỏa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./xecuuhoa.html">Xe Cứu Hỏa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./damchay.html">Đám Cháy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./trunuoc.html">Trụ Nước</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input ng-model="search" class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button ng-click="btnCreate()" class="btn btn-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#modalCreate">Thêm mới</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- test angular-->
+    <div class="container">
+
+
+        <!-- test modal-->
+        <!-- Button to Open the Modal -->
+
+        <!-- The Modal create -->
+        <div class="modal" id="modalCreate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm mới</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="#">
+                            <!-- Name-->
+
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" id="nameCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- city-->
+
+                            <div class="form-group">
+                                <label for="">Trạm cứu hỏa</label>
+                                <input type="text" class="form-control" id="idTramCuuHoaCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- county-->
+
+                            <div class="form-group">
+                                <label for="">Dung tích</label>
+                                <input type="text" class="form-control" id="capacityCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- address-->
+
+                            <div class="form-group">
+                                <label for="">Chiều cao tối đa</label>
+                                <input type="text" class="form-control" id="maxHeightCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lat-->
+
+                            <div class="form-group">
+                                <label for="">Kích thước</label>
+                                <input type="text" class="form-control" id="sizeCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lng-->
+
+                            <div class="form-group">
+                                <label for="">Trạng thái</label>
+                                <input type="text" class="form-control" id="statusCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="create()" type="button" class="btn btn-success" data-dismiss="modal">Create</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- The Modal edit -->
+        <div class="modal" id="modalEdit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm mới</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="#">
+                            <!-- Name-->
+
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" id="nameEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- city-->
+
+                            <div class="form-group">
+                                <label for="">Trạm cứu hỏa</label>
+                                <input type="text" class="form-control" id="idTramCuuHoaEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- county-->
+
+                            <div class="form-group">
+                                <label for="">Dung tích</label>
+                                <input type="text" class="form-control" id="capacityEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- address-->
+
+                            <div class="form-group">
+                                <label for="">Chiều cao tối đa</label>
+                                <input type="text" class="form-control" id="maxHeightEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lat-->
+
+                            <div class="form-group">
+                                <label for="">Kích thước</label>
+                                <input type="text" class="form-control" id="sizeEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lng-->
+
+                            <div class="form-group">
+                                <label for="">Trạng thái</label>
+                                <input type="text" class="form-control" id="statusEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="Edit()" type="button" class="btn btn-success" data-dismiss="modal">Edit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- -->
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th ng-click="orderbyme('id')">id</th>
+                    <th ng-click="orderbyme('name')">name</th>
+                    <th ng-click="orderbyme('idTramCuuHoa')">idTramCuuHoa</th>
+                    <th ng-click="orderbyme('capacity')">capacity</th>
+                    <th ng-click="orderbyme('maxHeight')">maxHeight</th>
+                    <th ng-click="orderbyme('size')">size</th>
+                    <th ng-click="orderbyme('status')">status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in dsXeCuuHoa | orderBy:myOrderBy | filter : search">
+                    <td>{{x.id}}</td>
+                    <td>{{x.name}}</td>
+                    <td>{{x.idTramCuuHoa}}</td>
+                    <td>{{x.capacity}}</td>
+                    <td>{{x.maxHeight}}</td>
+                    <td>{{x.size}}</td>
+                    <td>{{x.status}}</td>
+                    <td>
+                        <button ng-click="btnEdit(x.id)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
+                            Sửa
+                        </button>
+
+                    </td>
+                    <td>
+                        <button ng-click="Delete(x.id)" type="button" class="btn btn-danger">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+<script>
+    var app = angular.module("myApp", []);
+
+    app.controller("myCtrl", function ($scope, $http) {
+        $http.get("http://localhost:8177/api/xecuuhoa").then(function (response) {
+            $scope.dsXeCuuHoa = response.data;
+        });
+
+        $scope.loadData = function () {
+            $http.get("http://localhost:8177/api/xecuuhoa").then(function (response) {
+                $scope.dsXeCuuHoa = response.data;
+            });
+        }
+        $scope.create = function () {
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8177/api/xecuuhoa",
+                dataType: "text",
+                data: {
+                    name: $('#nameCreate').val(),
+                    idTramCuuHoa: $('#idTramCuuHoaCreate').val(),
+                    capacity: $('#capacityCreate').val(),
+                    maxHeight: $('#maxHeightCreate').val(),
+                    size: $('#sizeCreate').val(),
+                    status: $('#statusCreate').val(),
+                },
+                success: function (response) {
+                    console.log("success create");
+                    $scope.loadData();
+                }
+            });
+
+        }
+        $scope.id = "";
+        $scope.btnEdit = function (id) {
+            $scope.id = id;
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8177/api/xecuuhoa",
+                dataType: "json",
+                success: function (response) {
+                    response.forEach(element => {
+                        if (element.id == id) {
+                            console.log($scope.id);
+
+                            $('#nameEdit').val(element.name);
+                            $('#idTramcuuhoaEdit').val(element.idTramCuuHoa);
+                            $('#capacityEdit').val(element.maxHeight);
+                            $('#maxHeightEdit').val(element.maxHeight);
+                            $('#sizeEdit').val(element.size);
+                            $('#statusEdit').val(element.status);
+                        }
+                    });
+
+
+
+                }
+            });
+
+        }
+        $scope.btnCreate = function () {
+            $scope.Clear();
+        }
+
+        $scope.Clear = function () {
+            $('#nameCreate').val("");
+            $('#idTramcuuhoaCreate').val("");
+            $('#capacityCreate').val("");
+            $('#maxHeightCreate').val("");
+            $('#sizeCreate').val("");
+            $('#statusCreate').val("");
+
+            $('#nameEdit').val("");
+            $('#idTramcuuhoaEdit').val("");
+            $('#capacityEdit').val("");
+            $('#maxHeightEdit').val("");
+            $('#sizeEdit').val("");
+            $('#statusEdit').val("");
+        }
+
+        $scope.Edit = function () {
+            console.log($scope.id);
+
+            $.ajax({
+                type: "PUT",
+                url: "http://localhost:8177/api/xecuuhoa",
+                dataType: "text",
+                data: {
+                    id: $scope.id,
+                    name: $('#nameEdit').val(),
+                    idTramCuuHoa: $('#idTramCuuHoaEdit').val(),
+                    capacity: $('#capacityEdit').val(),
+                    maxHeight: $('#maxHeightEdit').val(),
+                    size: $('#sizeEdit').val(),
+                    status: $('#statusEdit').val(),
+
+                },
+                success: function (response) {
+                    console.log("success edit");
+                    $scope.loadData();
+                }
+            });
+
+        }
+
+        $scope.Delete = function (id) {
+            $.ajax({
+                type: "DELETE",
+                url: "http://localhost:8177/api/xecuuhoa/" + id,
+                dataType: "text",
+                success: function (response) {
+                    console.log("xóa thành công");
+                    $scope.loadData();
+                }
+            });
+        }
+        // table control
+        $scope.orderbyme = function (x) {
+            $scope.myOrderBy = x;
+        }
+    });
+</script>
+
+</html>
