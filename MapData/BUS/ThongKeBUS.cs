@@ -9,7 +9,7 @@ namespace MapData.BUS
 {
     public class ThongKeBUS
     {
-        private ThongKeBUS() { }
+        public ThongKeBUS() { }
         private static volatile ThongKeBUS instance;
 
         static object key = new object();

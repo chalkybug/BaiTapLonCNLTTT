@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -81,23 +82,17 @@
     <Compile Include="frmBaoCaoThietHai.Designer.cs">
       <DependentUpon>frmBaoCaoThietHai.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBieuDoThongKe.cs">
+    <Compile Include="frmMain2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBieuDoThongKe.Designer.cs">
-      <DependentUpon>frmBieuDoThongKe.cs</DependentUpon>
+    <Compile Include="frmMain2.Designer.cs">
+      <DependentUpon>frmMain2.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDamChay.cs">
+    <Compile Include="frmMap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDamChay.designer.cs">
-      <DependentUpon>frmDamChay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="frmMap.Designer.cs">
+      <DependentUpon>frmMap.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMapBaoChay.cs">
       <SubType>Form</SubType>
@@ -105,40 +100,82 @@
     <Compile Include="frmMapBaoChay.designer.cs">
       <DependentUpon>frmMapBaoChay.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmThongKe.cs">
+    <Compile Include="frmMapChonDiemTramCuuHoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmThongKe.Designer.cs">
-      <DependentUpon>frmThongKe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmTramCuuHoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTramCuuHoa.designer.cs">
-      <DependentUpon>frmTramCuuHoa.cs</DependentUpon>
+    <Compile Include="frmMapChonDiemTramCuuHoa.Designer.cs">
+      <DependentUpon>frmMapChonDiemTramCuuHoa.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlDamChay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlDamChay.Designer.cs">
+      <DependentUpon>UserControlDamChay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlHome.Designer.cs">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlLienHe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLienHe.Designer.cs">
+      <DependentUpon>UserControlLienHe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlMap.Designer.cs">
+      <DependentUpon>UserControlMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlQuanLy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlQuanLy.Designer.cs">
+      <DependentUpon>UserControlQuanLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlThongKe.Designer.cs">
+      <DependentUpon>UserControlThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlThongKeBieuDo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlThongKeBieuDo.Designer.cs">
+      <DependentUpon>UserControlThongKeBieuDo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlThongKeDanhSach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlThongKeDanhSach.Designer.cs">
+      <DependentUpon>UserControlThongKeDanhSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlTramCuuHoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlTramCuuHoa.Designer.cs">
+      <DependentUpon>UserControlTramCuuHoa.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmBaoCaoThietHai.resx">
       <DependentUpon>frmBaoCaoThietHai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBieuDoThongKe.resx">
-      <DependentUpon>frmBieuDoThongKe.cs</DependentUpon>
+    <EmbeddedResource Include="frmMain2.resx">
+      <DependentUpon>frmMain2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDamChay.resx">
-      <DependentUpon>frmDamChay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="frmMap.resx">
+      <DependentUpon>frmMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMapBaoChay.resx">
       <DependentUpon>frmMapBaoChay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmThongKe.resx">
-      <DependentUpon>frmThongKe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTramCuuHoa.resx">
-      <DependentUpon>frmTramCuuHoa.cs</DependentUpon>
+    <EmbeddedResource Include="frmMapChonDiemTramCuuHoa.resx">
+      <DependentUpon>frmMapChonDiemTramCuuHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +187,33 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="rptBaoCaoThietHai.rdlc" />
+    <EmbeddedResource Include="UserControlDamChay.resx">
+      <DependentUpon>UserControlDamChay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlHome.resx">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlLienHe.resx">
+      <DependentUpon>UserControlLienHe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlMap.resx">
+      <DependentUpon>UserControlMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlQuanLy.resx">
+      <DependentUpon>UserControlQuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlThongKe.resx">
+      <DependentUpon>UserControlThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlThongKeBieuDo.resx">
+      <DependentUpon>UserControlThongKeBieuDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlThongKeDanhSach.resx">
+      <DependentUpon>UserControlThongKeDanhSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlTramCuuHoa.resx">
+      <DependentUpon>UserControlTramCuuHoa.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DataSetBaoCaoThietHai.xsc">
       <DependentUpon>DataSetBaoCaoThietHai.xsd</DependentUpon>
     </None>

@@ -16,7 +16,7 @@ namespace MapWinForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new testbaocao());
+            Application.Run(new testtttttttttttttt());
         }
     }
 }

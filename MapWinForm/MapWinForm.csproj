@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,6 +76,18 @@
     <Compile Include="testbaocao.Designer.cs">
       <DependentUpon>testbaocao.cs</DependentUpon>
     </Compile>
+    <Compile Include="testtttttttttttttt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testtttttttttttttt.Designer.cs">
+      <DependentUpon>testtttttttttttttt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserThongKe.Designer.cs">
+      <DependentUpon>UserThongKe.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +103,12 @@
     <EmbeddedResource Include="rptBaoCaoThietHai.rdlc" />
     <EmbeddedResource Include="testbaocao.resx">
       <DependentUpon>testbaocao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testtttttttttttttt.resx">
+      <DependentUpon>testtttttttttttttt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserThongKe.resx">
+      <DependentUpon>UserThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BaoCaoThietHai.xsc">
       <DependentUpon>BaoCaoThietHai.xsd</DependentUpon>

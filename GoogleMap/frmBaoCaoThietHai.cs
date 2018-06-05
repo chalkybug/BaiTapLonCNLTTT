@@ -12,7 +12,7 @@ namespace GoogleMap
 {
     public partial class frmBaoCaoThietHai : Form
     {
-        public frmThongKe tk;
+        public UserControlThongKeDanhSach tk;
         public frmBaoCaoThietHai()
         {
             InitializeComponent();
