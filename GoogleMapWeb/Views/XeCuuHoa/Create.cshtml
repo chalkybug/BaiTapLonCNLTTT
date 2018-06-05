@@ -8,10 +8,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>XeCuuHoa</h4>
         <hr />
@@ -20,6 +20,8 @@
             @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+
+
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +29,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.idTramCuuHoa, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.idTramCuuHoa, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.DropDownList("idTramCuuHoa", ViewBag.listTramCuuHoa as SelectList, new { @class = "form-control" })
+
                 @Html.ValidationMessageFor(model => model.idTramCuuHoa, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,7 +39,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.capacity, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.capacity, new { htmlAttributes = new { @class = "form-control" } })
+
+                <select class="form-control">
+                    <option value="3000">3000</option>
+                    <option value="5000">5000</option>
+                    <option value="8000">8000</option>
+                </select>
+
                 @Html.ValidationMessageFor(model => model.capacity, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -43,7 +53,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.maxHeight, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.maxHeight, new { htmlAttributes = new { @class = "form-control" } })
+                <select class="form-control">
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="80">80</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.maxHeight, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,7 +65,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.size, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.size, new { htmlAttributes = new { @class = "form-control" } })
+                <select class="form-control">
+                    <option value="s">Nhỏ</option>
+                    <option value="m">Vừa</option>
+                    <option value="l">Lớn</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,7 +77,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                <select class="form-control">
+                    <option value="free">free</option>
+                    <option value="busy">busy</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
             </div>
         </div>

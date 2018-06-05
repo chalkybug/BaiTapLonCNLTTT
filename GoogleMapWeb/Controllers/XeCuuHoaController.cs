@@ -12,11 +12,11 @@ namespace GoogleMapWeb.Controllers
     {
         // GET: XeCuuHoa
         public string baseAddress = "http://localhost:8177/api/";
-        List<XeCuuHoa> listXeCuuHoa = null;
+      
         public ActionResult Index()
         {
-           
 
+            List<XeCuuHoa> listXeCuuHoa = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseAddress);
@@ -45,7 +45,32 @@ namespace GoogleMapWeb.Controllers
 
         public ActionResult Create()
         {
-           // ViewBag.DropdownTramCuuHoa = new SelectList(listXeCuuHoa, "id", "name");
+            List<TramCuuHoa> list = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseAddress);
+                //HTTP GET
+                var responseTask = client.GetAsync("tramcuuhoa");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<TramCuuHoa>>();
+                    readTask.Wait();
+
+                    list = readTask.Result;
+                }
+                else //web api sent error response 
+                {
+                    //log response status here..    
+
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
+            
+
+            ViewBag.listTramCuuHoa = new SelectList(list, "id", "name");
             return View();
         }
 
@@ -98,6 +123,7 @@ namespace GoogleMapWeb.Controllers
                     ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
                 }
             }
+           
             XeCuuHoa res = item.Where(x => x.id == id).FirstOrDefault();
             return View(res);
         }
