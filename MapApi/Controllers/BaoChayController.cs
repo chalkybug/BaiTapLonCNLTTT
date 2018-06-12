@@ -53,7 +53,7 @@ namespace MapApi.Controllers
         public IHttpActionResult Delete([FromUri] int id)
         {
             if (id <= 0)
-                return BadRequest("Not a valid student id");
+                return BadRequest("Not a valid id");
             BaoChayBUS.Instance.Delete(id);
             return Ok();
         }

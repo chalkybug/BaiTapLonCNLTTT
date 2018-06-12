@@ -12,24 +12,28 @@ namespace MapApi.Controllers
 {
     public class ThongKeController : ApiController
     {
-        ThongKeBUS tkbus = new ThongKeBUS();
-        public IHttpActionResult Get(string date1, string date2, string khuvuc)
+        [HttpGet]
+        public IHttpActionResult ThongKeTungKhu(string date1, string date2, string khuvuc)
         {
-            DataTable dt = new DataTable();
-            dt = tkbus.ThongKe( date1,  date2,  khuvuc);
-            return Ok(dt);
+            List <ThongKe> list= ThongKeBUS.Instance.ThongKeTungKhu(date1, date2, khuvuc);
+            
+            return Ok(list);
         }
-        public IHttpActionResult Get(string date1, string date2)
+
+        [HttpGet]
+        public IHttpActionResult ThongKeTatCaKhu(string date1, string date2)
         {
-            DataTable dt = new DataTable();
-            dt = tkbus.ThongKeTatCaKhu(date1, date2);
-            return Ok(dt);
+            List<ThongKe> list = ThongKeBUS.Instance.ThongKeTatCaKhu(date1, date2);
+
+            return Ok(list);
         }
-        public IHttpActionResult Get()
+
+        [HttpGet]
+        public IHttpActionResult GetDiaChiDamChay()
         {
-            DataTable dt = new DataTable();
-            dt = tkbus.GetData();
-            return Ok(dt);
+            List<string> list = ThongKeBUS.Instance.GetDiaChiDamChay();
+
+            return Ok(list);
         }
     }
 }

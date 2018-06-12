@@ -77,6 +77,11 @@ namespace MapData.DAO
         }
         public int Delete(int id)
         {
+            // xóa toàn bộ xe của trạm
+            string query1 = $"DELETE dbo.XeCuuHoa WHERE idTramCuuHoa ={id}";
+
+            DataProvider.Instance.ExecuteNonQuery(query1);
+            //xóa trạm
             string query = $"DELETE dbo.TramCuuHoa WHERE id ={id}";
 
             DataProvider.Instance.ExecuteNonQuery(query);

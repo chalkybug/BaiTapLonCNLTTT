@@ -28,8 +28,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./admin.html">Trang chủ
-                        <span class="sr-only">(current)</span>
+                        <a class="nav-link" href="./admin.html">Báo Cháy
                     </a>
                 </li>
                 <li class="nav-item">
@@ -186,7 +185,25 @@
                 </div>
             </div>
         </div>
-        <!-- -->
+        <div class="modal" id="modalDelete">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+    
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Bạn có chắc chắn muốn xóa</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+    
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button ng-click="Delete()" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
 
         <table class="table table-hover">
             <thead class="thead-dark">
@@ -219,7 +236,7 @@
 
                     </td>
                     <td>
-                        <button ng-click="Delete(x.id)" type="button" class="btn btn-danger">
+                        <button ng-click="btnDelete(x.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete" >
                             Xóa
                         </button>
                     </td>
@@ -262,7 +279,7 @@
             });
 
         }
-        $scope.id = "";
+      
         $scope.btnEdit = function (id) {
             $scope.id = id;
 
@@ -273,10 +290,10 @@
                 success: function (response) {
                     response.forEach(element => {
                         if (element.id == id) {
-                            console.log($scope.id);
+                            console.log(element.idTramCuuHoa);
 
                             $('#nameEdit').val(element.name);
-                            $('#idTramcuuhoaEdit').val(element.idTramCuuHoa);
+                            $('#idTramCuuHoaEdit').val(element.idTramCuuHoa);
                             $('#capacityEdit').val(element.maxHeight);
                             $('#maxHeightEdit').val(element.maxHeight);
                             $('#sizeEdit').val(element.size);
@@ -335,10 +352,14 @@
 
         }
 
-        $scope.Delete = function (id) {
+        
+        $scope.btnDelete= function(id){
+            $scope.idDelete=id;
+        }
+        $scope.Delete = function () {
             $.ajax({
                 type: "DELETE",
-                url: "http://localhost:8177/api/xecuuhoa/" + id,
+                url: "http://localhost:8177/api/xecuuhoa/" + $scope.idDelete,
                 dataType: "text",
                 success: function (response) {
                     console.log("xóa thành công");

@@ -1,0 +1,348 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section contentJs{
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("myCtrl", function ($scope, $http) {
+            $http.get("http://localhost:8177/api/tramcuuhoa").then(function (response) {
+                $scope.dsTramCuuHoa = response.data;
+            });
+
+            $scope.loadData = function () {
+                $http.get("http://localhost:8177/api/tramcuuhoa").then(function (response) {
+                    $scope.dsTramCuuHoa = response.data;
+                });
+            }
+            $scope.create = function () {
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost:8177/api/tramcuuhoa",
+                    dataType: "text",
+                    data: {
+                        name: $('#nameCreate').val(),
+                        phone: $('#phoneCreate').val(),
+                        address: $('#addressCreate').val(),
+                        lat: $('#latCreate').val(),
+                        lng: $('#lngCreate').val(),
+
+                    },
+                    success: function (response) {
+                        console.log("success create");
+                        $scope.loadData();
+                    }
+                });
+
+            }
+            $scope.idDetele = "";
+            $scope.btnDelete = function (id) {
+                $scope.idDetele = id;
+                console.log(id);
+
+            }
+
+            $scope.btnEdit = function (id) {
+                $scope.id = id;
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8177/api/tramcuuhoa",
+                    dataType: "json",
+                    success: function (response) {
+                        response.forEach(element => {
+                            if (element.id == id) {
+                                console.log($scope.id);
+
+                                $('#nameEdit').val(element.name);
+                                $('#phoneEdit').val(element.phone);
+                                $('#addressEdit').val(element.address);
+                                $('#latEdit').val(element.lat);
+                                $('#lngEdit').val(element.lng);
+                            }
+                        });
+
+
+
+                    }
+                });
+
+            }
+            $scope.btnCreate = function () {
+                $scope.Clear();
+            }
+
+            $scope.Clear = function () {
+                $('#nameCreate').val("");
+                $('#phoneCreate').val("");
+                $('#addressCreate').val("");
+                $('#latCreate').val("");
+                $('#lngCreate').val("");
+
+                $('#nameEdit').val("");
+                $('#phoneEdit').val("");
+                $('#addressEdit').val("");
+                $('#latEdit').val("");
+                $('#lngEdit').val("");
+            }
+
+            $scope.Edit = function () {
+                console.log($scope.id);
+                console.log($('#nameEdit').val());
+
+                $.ajax({
+                    type: "PUT",
+                    url: "http://localhost:8177/api/tramcuuhoa",
+                    dataType: "text",
+                    data: {
+                        id: $scope.id,
+                        name: $('#nameEdit').val(),
+                        phone: $('#phoneEdit').val(),
+                        address: $('#addressEdit').val(),
+                        lat: $('#latEdit').val(),
+                        lng: $('#lngEdit').val(),
+
+                    },
+                    success: function (response) {
+                        console.log("success edit");
+                        $scope.loadData();
+                    }
+                });
+
+            }
+
+            $scope.Delete = function () {
+
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:8177/api/tramcuuhoa/" + $scope.idDetele,
+                    dataType: "text",
+                    success: function (response) {
+                        console.log("xóa thành công");
+                        $scope.loadData();
+                    }
+                });
+            }
+            // table control
+            $scope.orderbyme = function (x) {
+                $scope.myOrderBy = x;
+            }
+        });
+    </script>
+
+}
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+
+
+
+    <!-- test angular-->
+    <div class="container">
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <form class="form-inline mr-auto">
+                        <div class="ml-auto">
+                            <input ng-model="search" class="form-control mr-sm-2" type="text" placeholder="Search">
+                            <button ng-click="btnCreate()" class="btn btn-warning my-2 my-sm-0" type="button" data-toggle="modal" data-target="#modalCreate">Thêm mới</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- test modal-->
+        <!-- Button to Open the Modal -->
+        <!-- The Modal create -->
+        <div class="modal" id="modalCreate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm mới</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="#">
+
+                            <!-- name-->
+
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" id="nameCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- phone-->
+
+                            <div class="form-group">
+                                <label for="">phone</label>
+                                <input type="text" class="form-control" name="phone" id="phoneCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- address-->
+
+                            <div class="form-group">
+                                <label for="">Address</label>
+                                <input type="text" class="form-control" name="address" id="addressCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lat-->
+
+                            <div class="form-group">
+                                <label for="">Lat</label>
+                                <input type="text" class="form-control" name="lat" id="latCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lng-->
+
+                            <div class="form-group">
+                                <label for="">Lng</label>
+                                <input type="text" class="form-control" name="lng" id="lngCreate" aria-describedby="helpId" placeholder="">
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="create()" type="button" class="btn btn-success" data-dismiss="modal">Create</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- The Modal edit -->
+        <div class="modal" id="modalEdit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm mới</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="#">
+
+                            <!-- name-->
+
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" id="nameEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- phone-->
+
+                            <div class="form-group">
+                                <label for="">phone</label>
+                                <input type="text" class="form-control" name="phone" id="phoneEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- address-->
+
+                            <div class="form-group">
+                                <label for="">Address</label>
+                                <input type="text" class="form-control" name="address" id="addressEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lat-->
+
+                            <div class="form-group">
+                                <label for="">Lat</label>
+                                <input type="text" class="form-control" name="lat" id="latEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                            <!-- lng-->
+
+                            <div class="form-group">
+                                <label for="">Lng</label>
+                                <input type="text" class="form-control" name="lng" id="lngEdit" aria-describedby="helpId" placeholder="">
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="Edit()" type="button" class="btn btn-success" data-dismiss="modal">Edit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--The Model delete -->
+        <div class="modal" id="modalDelete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Bạn có chắc chắn muốn xóa</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="Delete()" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th ng-click="orderbyme('id')">id</th>
+                    <th ng-click="orderbyme('name')">name</th>
+                    <th ng-click="orderbyme('phone')">phone</th>
+                    <th ng-click="orderbyme('address')">address</th>
+                    <th ng-click="orderbyme('lat')">lat</th>
+                    <th ng-click="orderbyme('lng')">lng</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in dsTramCuuHoa | orderBy:myOrderBy | filter : search">
+                    <td>{{x.id}}</td>
+                    <td>{{x.name}}</td>
+                    <td>{{x.phone}}</td>
+                    <td>{{x.address}}</td>
+                    <td>{{x.lat}}</td>
+                    <td>{{x.lng}}</td>
+
+                    <td>
+                        <button ng-click="btnEdit(x.id)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
+                            Sửa
+                        </button>
+
+                    </td>
+                    <td>
+                        <button ng-click="btnDelete(x.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+

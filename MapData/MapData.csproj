@@ -63,6 +63,7 @@
     <Compile Include="DAO\XeCuuHoaDAO.cs" />
     <Compile Include="DTO\BaoChay.cs" />
     <Compile Include="DTO\DamChay.cs" />
+    <Compile Include="DTO\ThongKe.cs" />
     <Compile Include="DTO\TramCuuHoa.cs" />
     <Compile Include="DTO\TruNuoc.cs" />
     <Compile Include="DTO\XeCuuHoa.cs" />
