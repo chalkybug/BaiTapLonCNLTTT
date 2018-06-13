@@ -9,7 +9,7 @@
         var app = angular.module("myApp", []);
 
         app.controller("myCtrl", function ($scope, $http) {
-         
+
 
             $scope.thongke = function () {
                 var date1 = $('#date1').val();
@@ -41,37 +41,37 @@
         <div class="col-sm-9">
             <div class="page-header">
                 <div class="page-title">
-                 
-                        <div class="col-sm-5">
-                            <div class="form-group">
-                                <div class="input-append datetimepicker">
-                                    <label for="">Thời gian từ</label>
-                                    <input data-format="yyyy-MM-dd" id="date1" type="text">
-                                    <span class="add-on">
 
-                                        <i class="fa fa-calendar">
-                                        </i>
-                                    </span>
-                                </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <div class="input-append datetimepicker">
+                                <label for="">Thời gian từ</label>
+                                <input data-format="yyyy-MM-dd" id="date1" type="text">
+                                <span class="add-on">
+
+                                    <i class="fa fa-calendar">
+                                    </i>
+                                </span>
                             </div>
                         </div>
-                        <div class="col-sm-5">
-                            <div class="form-group">
-                                <div class="input-append datetimepicker">
-                                    <label for="">Thời Gian Đến</label>
-                                    <input data-format="yyyy-MM-dd" id="date2" type="text">
-                                    <span class="add-on">
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <div class="input-append datetimepicker">
+                                <label for="">Thời Gian Đến</label>
+                                <input data-format="yyyy-MM-dd" id="date2" type="text">
+                                <span class="add-on">
 
-                                        <i class="fa fa-calendar">
-                                        </i>
-                                    </span>
-                                </div>
+                                    <i class="fa fa-calendar">
+                                    </i>
+                                </span>
                             </div>
                         </div>
-              
-                        <div class="col-sm-2">
-                            <button class="btn btn-outline-dark" ng-click="thongke()">Thống kê</button>
-                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <button class="btn btn-outline-dark" ng-click="thongke()">Thống kê</button>
+                    </div>
                 </div>
             </div>
         </div>

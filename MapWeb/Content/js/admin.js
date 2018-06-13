@@ -80,18 +80,18 @@
                     },
                     animation: google.maps.Animation.DROP,
                     icon: {
-                        url: "../icon/fire.png",
+                        url: "../../Content/icon/fire.png",
                         scaledSize: {
                             width: 30,
                             height: 40
                         }
                     }
                 });
-                var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + 
+                var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" +
                 " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
-                
-                contentInfoWindow+= " <a data-id='" + element.id + "' class ='btn btn-danger my-2 my-sm-0' onclick='DeleteBaoChay(this)'>Xóa bỏ </a>";
-              
+
+                contentInfoWindow += " <a data-id='" + element.id + "' class ='btn btn-danger my-2 my-sm-0' onclick='DeleteBaoChay(this)'>Xóa bỏ </a>";
+
                 var infowindow = new google.maps.InfoWindow({
                     content: contentInfoWindow
                 });
@@ -178,16 +178,16 @@ function handle(damchay) {
                         },
                         animation: google.maps.Animation.DROP,
                         icon: {
-                            url: "../icon/fire.png",
+                            url: "../../Content/icon/fire.png",
                             scaledSize: {
                                 width: 30,
                                 height: 40
                             }
                         }
                     });
-                    var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + 
+                    var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" +
                     " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
-           
+
                     var infowindow = new google.maps.InfoWindow({
                         content: contentInfoWindow
                     });
@@ -245,7 +245,7 @@ function handle(damchay) {
                         },
                         animation: google.maps.Animation.DROP,
                         icon: {
-                            url: "../icon/firestation.png",
+                            url: "../../Content/icon/firestation.png",
                             scaledSize: {
                                 width: 30,
                                 height: 40
@@ -416,7 +416,7 @@ function sortTable(n) {
         rows = table.getElementsByTagName("TR");
         /* Loop through all table rows (except the
         first, which contains table headers): */
-        for (i = 1; i < (rows.length - 1); i++) {
+        for (i = 1; i < (rows.length - 1) ; i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Get the two elements you want to compare,
@@ -426,15 +426,15 @@ function sortTable(n) {
             /* Check if the two rows should switch place,
             based on the direction, asc or desc: */
             if (dir == "asc") {
-            
-                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                     // If so, mark as a switch and break the loop:
                     shouldSwitch = true;
                     break;
                 }
             } else if (dir == "desc") {
-             
-                 if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
                     // If so, mark as a switch and break the loop:
                     shouldSwitch = true;
                     break;
@@ -459,42 +459,42 @@ function sortTable(n) {
     }
 }
 
-function sortNumberTable(){
+function sortNumberTable() {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("myTable");
     switching = true;
     /*Make a loop that will continue until
     no switching has been done:*/
     while (switching) {
-      //start by saying: no switching is done:
-      switching = false;
-      rows = table.getElementsByTagName("TR");
-      /*Loop through all table rows (except the
-      first, which contains table headers):*/
-      for (i = 1; i < (rows.length - 1); i++) {
-        //start by saying there should be no switching:
-        shouldSwitch = false;
-        /*Get the two elements you want to compare,
-        one from current row and one from the next:*/
-        x = rows[i].getElementsByTagName("TD")[2];
-        y = rows[i + 1].getElementsByTagName("TD")[2];
-        //check if the two rows should switch place:
-        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.getElementsByTagName("TR");
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1) ; i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[2];
+            y = rows[i + 1].getElementsByTagName("TD")[2];
+            //check if the two rows should switch place:
+            if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+            }
         }
-      }
-      if (shouldSwitch) {
-        /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
+        if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
     }
 }
 
-function DeleteBaoChay(node){
+function DeleteBaoChay(node) {
 
     var id = node.getAttribute("data-id");
     $.ajax({

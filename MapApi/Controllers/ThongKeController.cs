@@ -28,13 +28,7 @@ namespace MapApi.Controllers
             return Ok(list);
         }
 
-        [HttpGet]
-        public IHttpActionResult GetDiaChiDamChay()
-        {
-            List<string> list = ThongKeBUS.Instance.GetDiaChiDamChay();
-
-            return Ok(list);
-        }
+       
     }
 }
 

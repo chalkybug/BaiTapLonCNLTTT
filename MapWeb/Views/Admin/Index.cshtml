@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section contentJs{
+    <script src="~/Content/js/admin.js"></script>
+    <link rel="stylesheet" href="~/Content/css/index.css">
+
+}
+
+
+<body onload="initMap()">
+    <div class="container-fluid">
+      
+        <!-- -->
+        <div id="map"></div>
+
+
+        <div class="container space">
+            <div class="container">
+                <table style="display:none" id="myTable" class="table table-bordered acctionHide">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Tên</th>
+                            <th onclick="sortTable(1)">SĐT</th>
+                            <th onclick="sortNumberTable()">Khoảng Cách</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datarow"></tbody>
+                </table>
+            </div>
+    
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal" id="modalCar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"> THÔNG TIN XE ĐƯỢC CHỌN</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                        <br>
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">ID</small>
+                            <input type="text" class="form-control" id="pickCarId" aria-describedby="helpId" placeholder="ID" readonly>
+                        </div>
+                        <!-- county-->
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Name</small>
+                            <input type="text" class="form-control" id="pickCarName" aria-describedby="helpId" placeholder="Name" readonly>
+
+                        </div>
+                        <!-- address-->
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Size</small>
+                            <input type="text" class="form-control" id="pickCarSize" aria-describedby="helpId" placeholder="Size" readonly>
+                        </div>
+                        <!-- lat-->
+
+                    </div>
+
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+

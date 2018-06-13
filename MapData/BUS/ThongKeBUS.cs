@@ -45,9 +45,6 @@ namespace MapData.BUS
         {
             return ThongKeDAO.Instance.ThongKeTatCaKhu(date1, date2);
         }
-        public List<string> GetDiaChiDamChay()
-        {
-            return ThongKeDAO.Instance.GetDiaChiDamChay();
-        }
+       
     }
 }

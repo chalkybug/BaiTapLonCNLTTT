@@ -48,12 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\AccountBUS.cs" />
     <Compile Include="BUS\BaoChayBUS.cs" />
     <Compile Include="BUS\DamChayBUS.cs" />
     <Compile Include="BUS\ThongKeBUS.cs" />
     <Compile Include="BUS\TramCuuHoaBUS.cs" />
     <Compile Include="BUS\TruNuocBUS.cs" />
     <Compile Include="BUS\XeCuuHoaBUS.cs" />
+    <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BaoChayDAO.cs" />
     <Compile Include="DAO\DamChayDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="DAO\TramCuuHoaDAO.cs" />
     <Compile Include="DAO\TruNuocDAO.cs" />
     <Compile Include="DAO\XeCuuHoaDAO.cs" />
+    <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\BaoChay.cs" />
     <Compile Include="DTO\DamChay.cs" />
     <Compile Include="DTO\ThongKe.cs" />
