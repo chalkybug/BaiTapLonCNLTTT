@@ -49,6 +49,7 @@
             this.userControlThongKe1 = new GoogleMap.UserControlThongKe();
             this.userControlMap1 = new GoogleMap.UserControlMap();
             this.userControlLienHe1 = new GoogleMap.UserControlLienHe();
+            this.userControlMapBaoChay1 = new GoogleMap.UserControlMapBaoChay();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -254,6 +255,7 @@
             this.panel3.Controls.Add(this.userControlThongKe1);
             this.panel3.Controls.Add(this.userControlMap1);
             this.panel3.Controls.Add(this.userControlLienHe1);
+            this.panel3.Controls.Add(this.userControlMapBaoChay1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(186, 0);
             this.panel3.Name = "panel3";
@@ -303,6 +305,14 @@
             this.userControlLienHe1.Size = new System.Drawing.Size(930, 582);
             this.userControlLienHe1.TabIndex = 4;
             // 
+            // userControlMapBaoChay1
+            // 
+            this.userControlMapBaoChay1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlMapBaoChay1.Location = new System.Drawing.Point(0, 0);
+            this.userControlMapBaoChay1.Name = "userControlMapBaoChay1";
+            this.userControlMapBaoChay1.Size = new System.Drawing.Size(930, 582);
+            this.userControlMapBaoChay1.TabIndex = 5;
+            // 
             // frmMain2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,5 +353,6 @@
         private UserControlHome userControlHome1;
         private UserControlMap userControlMap1;
         private UserControlLienHe userControlLienHe1;
+        private UserControlMapBaoChay userControlMapBaoChay1;
     }
 }

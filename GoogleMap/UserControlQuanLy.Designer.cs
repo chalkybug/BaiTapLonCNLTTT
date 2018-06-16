@@ -40,6 +40,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.userControlTramCuuHoa1 = new GoogleMap.UserControlTramCuuHoa();
             this.userControlDamChay1 = new GoogleMap.UserControlDamChay();
+            this.userControlXeCuuHoa1 = new GoogleMap.UserControlXeCuuHoa();
+            this.userControlXeCuuHoa2 = new GoogleMap.UserControlXeCuuHoa();
+            this.userControlTruNuoc11 = new GoogleMap.userControlTruNuoc1();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -169,6 +172,9 @@
             // 
             this.panel1.Controls.Add(this.userControlTramCuuHoa1);
             this.panel1.Controls.Add(this.userControlDamChay1);
+            this.panel1.Controls.Add(this.userControlXeCuuHoa1);
+            this.panel1.Controls.Add(this.userControlXeCuuHoa2);
+            this.panel1.Controls.Add(this.userControlTruNuoc11);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 99);
             this.panel1.Name = "panel1";
@@ -192,6 +198,33 @@
             this.userControlDamChay1.Name = "userControlDamChay1";
             this.userControlDamChay1.Size = new System.Drawing.Size(975, 471);
             this.userControlDamChay1.TabIndex = 0;
+            // 
+            // userControlXeCuuHoa1
+            // 
+            this.userControlXeCuuHoa1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.userControlXeCuuHoa1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlXeCuuHoa1.Location = new System.Drawing.Point(0, 0);
+            this.userControlXeCuuHoa1.Name = "userControlXeCuuHoa1";
+            this.userControlXeCuuHoa1.Size = new System.Drawing.Size(975, 471);
+            this.userControlXeCuuHoa1.TabIndex = 2;
+            // 
+            // userControlXeCuuHoa2
+            // 
+            this.userControlXeCuuHoa2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.userControlXeCuuHoa2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlXeCuuHoa2.Location = new System.Drawing.Point(0, 0);
+            this.userControlXeCuuHoa2.Name = "userControlXeCuuHoa2";
+            this.userControlXeCuuHoa2.Size = new System.Drawing.Size(975, 471);
+            this.userControlXeCuuHoa2.TabIndex = 3;
+            // 
+            // userControlTruNuoc11
+            // 
+            this.userControlTruNuoc11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.userControlTruNuoc11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlTruNuoc11.Location = new System.Drawing.Point(0, 0);
+            this.userControlTruNuoc11.Name = "userControlTruNuoc11";
+            this.userControlTruNuoc11.Size = new System.Drawing.Size(975, 471);
+            this.userControlTruNuoc11.TabIndex = 4;
             // 
             // UserControlQuanLy
             // 
@@ -222,5 +255,8 @@
         private System.Windows.Forms.Panel panel1;
         private UserControlDamChay userControlDamChay1;
         private UserControlTramCuuHoa userControlTramCuuHoa1;
+        private UserControlXeCuuHoa userControlXeCuuHoa1;
+        private UserControlXeCuuHoa userControlXeCuuHoa2;
+        private userControlTruNuoc1 userControlTruNuoc11;
     }
 }

@@ -71,14 +71,17 @@
             // 
             // btnInBaoCao
             // 
+            this.btnInBaoCao.BackColor = System.Drawing.Color.Maroon;
+            this.btnInBaoCao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnInBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInBaoCao.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInBaoCao.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnInBaoCao.Location = new System.Drawing.Point(574, 131);
             this.btnInBaoCao.Name = "btnInBaoCao";
-            this.btnInBaoCao.Size = new System.Drawing.Size(117, 26);
+            this.btnInBaoCao.Size = new System.Drawing.Size(117, 35);
             this.btnInBaoCao.TabIndex = 15;
             this.btnInBaoCao.Text = "In báo cáo";
-            this.btnInBaoCao.UseVisualStyleBackColor = true;
+            this.btnInBaoCao.UseVisualStyleBackColor = false;
             this.btnInBaoCao.Click += new System.EventHandler(this.btnInBaoCao_Click);
             // 
             // cmbKhuVuc
@@ -92,26 +95,32 @@
             // 
             // btnThongKeTatCaKhu
             // 
+            this.btnThongKeTatCaKhu.BackColor = System.Drawing.Color.Maroon;
+            this.btnThongKeTatCaKhu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnThongKeTatCaKhu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThongKeTatCaKhu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKeTatCaKhu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThongKeTatCaKhu.Location = new System.Drawing.Point(719, 131);
             this.btnThongKeTatCaKhu.Name = "btnThongKeTatCaKhu";
-            this.btnThongKeTatCaKhu.Size = new System.Drawing.Size(102, 26);
+            this.btnThongKeTatCaKhu.Size = new System.Drawing.Size(102, 35);
             this.btnThongKeTatCaKhu.TabIndex = 12;
             this.btnThongKeTatCaKhu.Text = "Tất cả khu";
-            this.btnThongKeTatCaKhu.UseVisualStyleBackColor = true;
+            this.btnThongKeTatCaKhu.UseVisualStyleBackColor = false;
             this.btnThongKeTatCaKhu.Click += new System.EventHandler(this.btnThongKeTatCaKhu_Click);
             // 
             // btnThongKeTungKhu
             // 
+            this.btnThongKeTungKhu.BackColor = System.Drawing.Color.Maroon;
+            this.btnThongKeTungKhu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnThongKeTungKhu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThongKeTungKhu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKeTungKhu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThongKeTungKhu.Location = new System.Drawing.Point(719, 77);
             this.btnThongKeTungKhu.Name = "btnThongKeTungKhu";
-            this.btnThongKeTungKhu.Size = new System.Drawing.Size(102, 26);
+            this.btnThongKeTungKhu.Size = new System.Drawing.Size(102, 35);
             this.btnThongKeTungKhu.TabIndex = 13;
             this.btnThongKeTungKhu.Text = "1 khu";
-            this.btnThongKeTungKhu.UseVisualStyleBackColor = true;
+            this.btnThongKeTungKhu.UseVisualStyleBackColor = false;
             this.btnThongKeTungKhu.Click += new System.EventHandler(this.btnThongKeTungKhu_Click);
             // 
             // date2
@@ -196,7 +205,7 @@
             // 
             // diachi
             // 
-            this.diachi.DataPropertyName = "diachi";
+            this.diachi.DataPropertyName = "address";
             this.diachi.HeaderText = "Địa chỉ";
             this.diachi.Name = "diachi";
             this.diachi.Width = 320;
@@ -204,14 +213,14 @@
             // sovuchay
             // 
             this.sovuchay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sovuchay.DataPropertyName = "sovuchay";
+            this.sovuchay.DataPropertyName = "count";
             this.sovuchay.HeaderText = "Sô vụ cháy";
             this.sovuchay.Name = "sovuchay";
             // 
             // thiethai
             // 
             this.thiethai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.thiethai.DataPropertyName = "thiethai";
+            this.thiethai.DataPropertyName = "damages";
             this.thiethai.HeaderText = "Thiệt Hại";
             this.thiethai.Name = "thiethai";
             // 
