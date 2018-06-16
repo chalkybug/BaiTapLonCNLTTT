@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
+using MapData.DTO;
 
 namespace GoogleMap
 {
@@ -81,8 +82,8 @@ namespace GoogleMap
                 {
                     var readTask = result.Content.ReadAsAsync<DataTable>();
                     readTask.Wait();
-                    var thongkes = readTask.Result;
-                    cmbKhuVuc.DataSource = thongkes;
+                    var students = readTask.Result;
+                    cmbKhuVuc.DataSource = students;
                     cmbKhuVuc.DisplayMember = "county";
                 }
             }

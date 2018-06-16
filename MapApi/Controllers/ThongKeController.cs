@@ -12,7 +12,7 @@ namespace MapApi.Controllers
 {
     public class ThongKeController : ApiController
     {
-        ThongKeBUS tkbus = new ThongKeBUS();
+     
         //public IHttpActionResult Get(string date1, string date2, string khuvuc)
         //{
         //    DataTable dt = new DataTable();
@@ -25,17 +25,14 @@ namespace MapApi.Controllers
         //    dt = tkbus.ThongKeTatCaKhu(date1, date2);
         //    return Ok(dt);
         //}
-        public IHttpActionResult Get()
+        public IHttpActionResult GetData()
         {
             DataTable dt = new DataTable();
-            dt = tkbus.GetData();
+            dt = ThongKeBUS.Instance.GetData();
+          
             return Ok(dt);
         }
-        //public IHttpActionResult GetKhuVuc()
-        //{
-        //    List<ThongKe> item = ThongKeBUS.Instance.GetKhuVuc();
-        //    return Ok(item);
-        //}
+
         [HttpGet]
         public IHttpActionResult ThongKeTungKhu(string date1, string date2, string khuvuc)
         {
@@ -51,7 +48,7 @@ namespace MapApi.Controllers
 
             return Ok(list);
         }
-        
+
     }
 }
 

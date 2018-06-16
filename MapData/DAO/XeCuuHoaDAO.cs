@@ -84,7 +84,14 @@ namespace MapData.DAO
 
             return 1;
         }
+        public int SuaTrangThaiXe(int id)
+        {
+            string query = $"UPDATE dbo.XeCuuHoa SET status='busy' WHERE id ={id}";
 
+            DataProvider.Instance.ExecuteNonQuery(query);
+
+            return 1;
+        }
 
     }
 

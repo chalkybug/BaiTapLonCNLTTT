@@ -63,6 +63,9 @@ namespace MapData.BUS
         {
             return XeCuuHoaDAO.Instance.Delete(id);
         }
-
+        public int SuaTrangThaiXe(int id)
+        {
+            return XeCuuHoaDAO.Instance.SuaTrangThaiXe(id);
+        }
     }
 }
