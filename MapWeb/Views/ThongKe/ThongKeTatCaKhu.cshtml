@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "ThongKeTungKhu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section contentJs{
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("myCtrl", function ($scope, $http) {
+
+
+            $scope.thongke = function () {
+                var date1 = $('#date1').val();
+                var date2 = $('#date2').val();
+                $http.get("http://localhost:8177/api/thongke/ThongKeTatCaKhu?date1=" + date1 + "&date2=" + date2).then(function (response) {
+                    $scope.ds = response.data;
+                });
+            }
+            // table control
+            $scope.orderbyme = function (x) {
+                $scope.myOrderBy = x;
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.datetimepicker').datetimepicker({
+                pickTime: false
+            });
+
+        });
+    </script>
+
+}
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div class="breadcrumbs">
+        <div class="col-sm-9">
+            <div class="page-header">
+                <div class="page-title">
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <div class="input-append datetimepicker">
+                                <label for="">Thời gian từ</label>
+                                <input data-format="yyyy-MM-dd" id="date1" type="text">
+                                <span class="add-on">
+
+                                    <i class="fa fa-calendar">
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <div class="input-append datetimepicker">
+                                <label for="">Thời Gian Đến</label>
+                                <input data-format="yyyy-MM-dd" id="date2" type="text">
+                                <span class="add-on">
+
+                                    <i class="fa fa-calendar">
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <button class="btn btn-outline-dark" ng-click="thongke()">Thống kê</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="page-header float-right">
+                <form class="form-inline mr-auto">
+                    <div class="ml-auto">
+                        <input ng-model="search" class="form-control mr-sm-2" type="text" placeholder="Search">
+
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th ng-click="orderbyme('address')">Địa Chỉ</th>
+                    <th ng-click="orderbyme('count')">Số Vụ Cháy</th>
+                    <th ng-click="orderbyme('damages')">Thiệt Hại</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in ds | orderBy:myOrderBy | filter : search">
+                    <td>{{x.address}}</td>
+                    <td>{{x.count}}</td>
+                    <td>{{x.damages}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</body>
+
+

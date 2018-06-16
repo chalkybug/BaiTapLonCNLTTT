@@ -1,0 +1,538 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@section contentJs{
+    <script type="text/javascript">
+        $(function () {
+            $('.datetimepicker').datetimepicker({
+                pickTime: false
+            });
+
+        });
+    </script>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("myCtrl", function ($scope, $http) {
+
+            
+            $http.get("http://localhost:8177/api/damchay").then(function (response) {
+                $scope.dsdamchay = response.data;
+                
+            }).then(function () {
+               
+                setTimeout(() => {    //<<<---    using ()=> syntax
+                    $scope.changeURL();
+                }, 500);
+                
+            })
+
+            $http.get("http://localhost:8177/api/baochay").then(function (response) {
+                $scope.dsBaoChay = response.data;
+             
+            });
+
+            $scope.loadData = function () {
+                $http.get("http://localhost:8177/api/damchay").then(function (response) {
+                    $scope.dsdamchay = response.data;
+                }).then(function () {
+
+                    setTimeout(() => {    //<<<---    using ()=> syntax
+                        $scope.changeURL();
+                    }, 500);
+
+                })
+            }
+            $scope.create = function () {
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost:8177/api/damchay",
+                    dataType: "text",
+                    data: {
+                        level: $('#levelCreate').val(),
+                        city: $('#cityCreate').val(),
+                        county: $('#countyCreate').val(),
+                        damages: $('#damagesCreate').val(),
+                        address: $('#addressCreate').val(),
+                        date: $('#dateCreate').val(),
+                        lat: $('#latCreate').val(),
+                        lng: $('#lngCreate').val(),
+                        image: $('#imageCreate').val(),
+
+                    },
+                    success: function (response) {
+                        console.log("success create");
+                        $scope.loadData();
+                    }
+                });
+
+            }
+
+            $scope.btnEdit = function (id) {
+                $scope.id = id;
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8177/api/damchay",
+                    dataType: "json",
+                    success: function (response) {
+                        response.forEach(element => {
+                            if (element.id == id) {
+                                console.log($scope.id);
+
+                                $('#levelEdit').val(element.level);
+                                $('#cityEdit').val(element.city);
+                                $('#countyEdit').val(element.county);
+                                $('#damagesEdit').val(element.damages);
+                                $('#addressEdit').val(element.address);
+                                $('#dateEdit').val(element.date);
+                                $('#latEdit').val(element.lat);
+                                $('#lngEdit').val(element.lng);
+                                $('#imageEdit').val(element.image);
+                            }
+                        });
+
+
+
+                    }
+                });
+
+            }
+
+            $scope.btnCreate = function () {
+                $scope.Clear();
+            }
+
+            $scope.btnDelete = function (id) {
+                $scope.idDetele = id;
+            }
+            $scope.fillCreateField = function (baochay) {
+                $scope.dsBaoChay.forEach(element => {
+                    if (element.id == baochay.id) {
+
+
+                        $('#cityCreate').val(element.city);
+                        $('#countyCreate').val(element.county);
+
+                        $('#addressCreate').val(element.address);
+
+                        $('#latCreate').val(element.lat);
+                        $('#lngCreate').val(element.lng);
+                        $('#imageCreate').val(element.image);
+
+
+                    }
+                });
+            }
+            $scope.Clear = function () {
+                $('#levelEdit').val("");
+                $('#cityEdit').val("");
+                $('#countyEdit').val("");
+                $('#damagesEdit').val("");
+                $('#addressEdit').val("");
+                $('#dateEdit').val("");
+                $('#latEdit').val("");
+                $('#lngEdit').val("");
+                $('#imageEdit').val("");
+
+                $('#levelCreate').val("");
+                $('#cityCreate').val("");
+                $('#countyCreate').val("");
+                $('#damagesCreate').val("");
+                $('#addressCreate').val("");
+                $('#dateCreate').val("");
+                $('#latCreate').val("");
+                $('#lngCreate').val("");
+                $('#imageCreate').val("");
+            }
+
+            $scope.Edit = function () {
+                console.log($scope.id);
+
+                $.ajax({
+                    type: "PUT",
+                    url: "http://localhost:8177/api/damchay",
+                    dataType: "text",
+                    data: {
+                        id: $scope.id,
+                        level: $('#levelEdit').val(),
+                        city: $('#cityEdit').val(),
+                        county: $('#countyEdit').val(),
+                        damages: $('#damagesEdit').val(),
+                        address: $('#addressEdit').val(),
+                        date: $('#dateEdit').val(),
+                        lat: $('#latEdit').val(),
+                        lng: $('#lngEdit').val(),
+                        image: $('#imageEdit').val(),
+
+                    },
+                    success: function (response) {
+                        console.log("success edit");
+                        $scope.loadData();
+                    }
+                });
+
+            }
+
+            $scope.Delete = function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:8177/api/damchay/" + $scope.idDetele,
+                    dataType: "text",
+                    success: function (response) {
+                        console.log("xóa thành công");
+                        $scope.loadData();
+                    }
+                });
+            }
+            // table control
+            $scope.orderbyme = function (x) {
+                $scope.myOrderBy = x;
+            }
+            //handle changeURL image
+            $scope.changeURL = function () {
+
+                var arr = $("img[src*='BaiTap']");
+                console.log(arr);
+                for (var i = 0; i < arr.length; i++) {
+                    var url = arr[i].getAttribute("src");
+
+                    var res = $scope.change(url);
+
+                    arr[i].setAttribute("src", res)
+                }
+             
+
+            }
+
+            $scope.change = function (str) {
+                var index = str.indexOf("BaiTapLonCNLTTT");
+
+                var s1 = str.substring(index, str.length);
+
+                var http = "http://127.0.0.1:8888/";
+
+                var res = (http + s1);
+                return res;
+            }
+
+
+        });
+    </script>
+
+}
+
+<!-- datetime-->
+
+
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+
+    <!-- test angular-->
+    <div class="container">
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Quản Lý Đám Cháy</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <form class="form-inline mr-auto">
+                        <div class="ml-auto">
+                            <input ng-model="search" class="form-control mr-sm-2" type="text" placeholder="Search">
+                            <button ng-click="btnCreate()" class="btn btn-warning my-2 my-sm-0" type="button" data-toggle="modal" data-target="#modalCreate">Thêm mới</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- test modal-->
+        <!-- Button to Open the Modal -->
+        <!-- The Modal create -->
+        <div class="modal" id="modalCreate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm mới</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="#">
+                            <!-- Name-->
+                            <div class="container">
+                                <div class="row">
+                                    <label for="">Yêu cầu báo cháy</label>
+                                    <select class="form-control" ng-model="selectedName" ng-options="x.address + x.county + x.city for x in dsBaoChay" ng-change="fillCreateField(selectedName)"></select>
+                                    <div class="col-sm-6">
+                                        <!-- select baochay-->
+
+
+                                        <div class="form-group">
+                                            <label for="">Cấp Độ</label>
+                                            <input type="text" class="form-control" id="levelCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- city-->
+
+                                        <div class="form-group">
+                                            <label for="">Thành Phố</label>
+                                            <input type="text" class="form-control" id="cityCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- county-->
+
+                                        <div class="form-group">
+                                            <label for="">Quận</label>
+                                            <input type="text" class="form-control" id="countyCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Thiệt hại</label>
+                                            <input type="text" class="form-control" id="damagesCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <!-- lat-->
+
+                                        <div class="form-group">
+                                            <label for="">Địa Chỉ</label>
+                                            <input type="text" class="form-control" id="addressCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- lng-->
+
+
+                                        <div class="form-group">
+                                            <div class="input-append datetimepicker">
+                                                <label for="">Ngày Cháy</label>
+                                                <input data-format="yyyy-MM-dd" id="dateCreate" type="text"></input>
+                                                <span class="add-on">
+
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- lat-->
+
+                                        <div class="form-group">
+                                            <label for="">Vĩ độ</label>
+                                            <input type="text" class="form-control" id="latCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- lng-->
+
+                                        <div class="form-group">
+                                            <label for="">Kinh Độ</label>
+                                            <input type="text" class="form-control" id="lngCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Ảnh</label>
+                                            <input type="text" class="form-control" id="imageCreate" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="create()" type="button" class="btn btn-success" data-dismiss="modal">Create</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- The Modal edit -->
+        <div class="modal" id="modalEdit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Chỉnh Sửa</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                        <form action="#">
+                            <!-- Name-->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Cấp độ</label>
+                                            <input type="text" class="form-control" id="levelEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- city-->
+
+                                        <div class="form-group">
+                                            <label for="">Thành Phố</label>
+                                            <input type="text" class="form-control" id="cityEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- county-->
+
+                                        <div class="form-group">
+                                            <label for="">Quận</label>
+                                            <input type="text" class="form-control" id="countyEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- address-->
+
+                                        <div class="form-group">
+                                            <label for="">Thiệt Hại</label>
+                                            <input type="text" class="form-control" id="damagesEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label for="">Địa Chỉ</label>
+                                            <input type="text" class="form-control" id="addressEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- lng-->
+
+                                        <div class="form-group">
+                                            <div class="input-append datetimepicker">
+                                                <label for="">Ngày Cháy</label>
+                                                <input data-format="yyyy-MM-dd" id="dateEdit" type="text"></input>
+                                                <span class="add-on">
+
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- lat-->
+
+                                        <div class="form-group">
+                                            <label for="">Vĩ Độ</label>
+                                            <input type="text" class="form-control" id="latEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <!-- lng-->
+
+                                        <div class="form-group">
+                                            <label for="">Kinh độ</label>
+                                            <input type="text" class="form-control" id="lngEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Ảnh</label>
+                                            <input type="text" class="form-control" id="imageEdit" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- lat-->
+
+                        </form>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="Edit()" type="button" class="btn btn-success" data-dismiss="modal">Edit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--The Model delete -->
+        <div class="modal" id="modalDelete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Bạn có chắc chắn muốn xóa</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button ng-click="Delete()" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th ng-click="orderbyme('id')">Mã</th>
+                    <th ng-click="orderbyme('level')">Cấp Độ</th>
+                    <th ng-click="orderbyme('city')">Thành Phố</th>
+                    <th ng-click="orderbyme('county')">Quận</th>
+                    <th ng-click="orderbyme('damages')">Thiệt Hại</th>
+                    <th ng-click="orderbyme('address')">Địa Chỉ</th>
+                    <th ng-click="orderbyme('date')">Ngày Cháy</th>
+                    <th ng-click="orderbyme('lat')">Vĩ Độ</th>
+                    <th ng-click="orderbyme('lng')">Kinh Độ</th>
+                    <th ng-click="orderbyme('image')">Ảnh</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in dsdamchay | orderBy:myOrderBy | filter : search">
+                    <td>{{x.id}}</td>
+                    <td>{{x.level}}</td>
+                    <td>{{x.city}}</td>
+                    <td>{{x.county}}</td>
+                    <td>{{x.damages}}</td>
+                    <td>{{x.address}}</td>
+                    <td>{{x.date}}</td>
+                    <td>{{x.lat}}</td>
+                    <td>{{x.lng}}</td>
+                    <td>
+                        <img src="{{x.image}}" width="100px" height="100px">
+                    </td>
+                    <td>
+                        <button ng-click="btnEdit(x.id)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
+                            Sửa
+                        </button>
+
+                    </td>
+                    <td>
+                        <button ng-click="btnDelete(x.id)" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
