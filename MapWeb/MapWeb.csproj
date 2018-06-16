@@ -99,12 +99,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\js\admin.js" />
+    <Content Include="Content\js\client.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaoChayController.cs" />
     <Compile Include="Controllers\DamChayController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\TramCuuHoaController.cs" />
@@ -115,6 +117,9 @@
     </Compile>
     <Compile Include="Models\CustomAuthenticationAttribute.cs" />
     <Compile Include="Models\GroupName.cs" />
+    <Compile Include="Models\Notification.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="MySession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -126,11 +131,11 @@
     <Content Include="Views\TramCuuHoa\Index.cshtml" />
     <Content Include="Views\TruNuoc\Index.cshtml" />
     <Content Include="Views\XeCuuHoa\Index.cshtml" />
-    <Content Include="Views\ThongKe\ThongKeTungKhu.cshtml" />
     <Content Include="Views\ThongKe\ThongKeTatCaKhu.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Notification.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\BaoChay\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

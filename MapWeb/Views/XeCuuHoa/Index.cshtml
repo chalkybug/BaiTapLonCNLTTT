@@ -11,21 +11,38 @@
         app.controller("myCtrl", function ($scope, $http) {
             $http.get("http://localhost:8177/api/xecuuhoa").then(function (response) {
                 $scope.dsXeCuuHoa = response.data;
+            }).then(function () {
+
+                setTimeout(() => {    //<<<---    using ()=> syntax
+                    $scope.updateidTRamCuuHoa();
+                }, 100);
+
+            });
+
+            $http.get("http://localhost:8177/api/tramcuuhoa").then(function (response) {
+                $scope.dsTramCuuHoa = response.data;
             });
 
             $scope.loadData = function () {
                 $http.get("http://localhost:8177/api/xecuuhoa").then(function (response) {
                     $scope.dsXeCuuHoa = response.data;
+                }).then(function () {
+
+                    setTimeout(() => {    //<<<---    using ()=> syntax
+                        $scope.updateidTRamCuuHoa();
+                    }, 100);
+
                 });
             }
             $scope.create = function () {
+
                 $.ajax({
                     type: "post",
                     url: "http://localhost:8177/api/xecuuhoa",
                     dataType: "text",
                     data: {
                         name: $('#nameCreate').val(),
-                        idTramCuuHoa: $('#idTramCuuHoaCreate').val(),
+                        idTramCuuHoa: $scope.idTramCuuHoa,
                         capacity: $('#capacityCreate').val(),
                         maxHeight: $('#maxHeightCreate').val(),
                         size: $('#sizeCreate').val(),
@@ -39,8 +56,19 @@
 
             }
 
-            $scope.btnEdit = function (id) {
+            $scope.btnEdit = function (id, idTramCuuHoa) {
+                $scope.idTramCuuHoa = idTramCuuHoa;
                 $scope.id = id;
+                var res;
+                $scope.dsTramCuuHoa.forEach(element=> {
+                    if (element.id == idTramCuuHoa) {
+                        var x = $("option[label*='" + element.name + "']")
+
+                        res = x[1].getAttribute("value");
+                        //    console.log(res);
+                    }
+
+                });
 
                 $.ajax({
                     type: "GET",
@@ -52,8 +80,10 @@
                                 console.log(element.idTramCuuHoa);
 
                                 $('#nameEdit').val(element.name);
-                                $('#idTramCuuHoaEdit').val(element.idTramCuuHoa);
-                                $('#capacityEdit').val(element.maxHeight);
+
+                                $('#idTramCuuHoaEdit').val(res);
+
+                                $('#capacityEdit').val(element.capacity);
                                 $('#maxHeightEdit').val(element.maxHeight);
                                 $('#sizeEdit').val(element.size);
                                 $('#statusEdit').val(element.status);
@@ -64,6 +94,9 @@
 
                     }
                 });
+
+
+
 
             }
             $scope.btnCreate = function () {
@@ -87,8 +120,8 @@
             }
 
             $scope.Edit = function () {
-                console.log($scope.id);
 
+                console.log($scope.id);
                 $.ajax({
                     type: "PUT",
                     url: "http://localhost:8177/api/xecuuhoa",
@@ -96,7 +129,7 @@
                     data: {
                         id: $scope.id,
                         name: $('#nameEdit').val(),
-                        idTramCuuHoa: $('#idTramCuuHoaEdit').val(),
+                        idTramCuuHoa: $scope.idTramCuuHoa,
                         capacity: $('#capacityEdit').val(),
                         maxHeight: $('#maxHeightEdit').val(),
                         size: $('#sizeEdit').val(),
@@ -126,6 +159,42 @@
                     }
                 });
             }
+            // function
+            $scope.updateTRamCuuHoa = function (tramcuuhoa) {
+                $scope.idTramCuuHoa = tramcuuhoa.id;
+                $scope.nameTramCuuHoa = tramcuuhoa.name;
+
+            }
+
+            $scope.updateidTRamCuuHoa = function () {
+                var arr = $("tr> td:nth-child(3)");
+               // console.log(arr);
+
+                for (var i = 0; i < arr.length; i++) {
+
+                    var idTramCuuHoa = arr[i].innerText;
+                  //  console.log(arr[i]);
+                    var convertName = new Promise(function (resolve, reject) {
+
+                        $scope.dsTramCuuHoa.forEach(element=> {
+
+                            if (element.id == idTramCuuHoa) {
+                              //  console.log(element.name);
+                               // resolve(element.name);
+                                arr[i].innerText = element.name;
+                            }
+
+                        });
+
+                    });
+
+                   
+                }
+             
+
+            }
+
+
             // table control
             $scope.orderbyme = function (x) {
                 $scope.myOrderBy = x;
@@ -145,7 +214,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Quản Lý Xe Cứu Hỏa</h1>
                     </div>
                 </div>
             </div>
@@ -188,7 +257,9 @@
 
                             <div class="form-group">
                                 <label for="">Trạm cứu hỏa</label>
-                                <input type="text" class="form-control" id="idTramCuuHoaCreate" aria-describedby="helpId" placeholder="">
+                                <!-- <input type="text" class="form-control" id="idTramCuuHoaCreate" aria-describedby="helpId" placeholder="">-->
+
+                                <select class="form-control" ng-model="selectedName2" ng-options="x.name for x in dsTramCuuHoa" ng-change="updateTRamCuuHoa(selectedName2)"></select>
                             </div>
                             <!-- county-->
 
@@ -212,7 +283,11 @@
 
                             <div class="form-group">
                                 <label for="">Trạng thái</label>
-                                <input type="text" class="form-control" id="statusCreate" aria-describedby="helpId" placeholder="">
+                                <select class="form-control" name="statusCreate" id="statusCreate">
+                                    <option>free</option>
+                                    <option>busy</option>
+
+                                </select>
                             </div>
                         </form>
 
@@ -251,7 +326,8 @@
 
                             <div class="form-group">
                                 <label for="">Trạm cứu hỏa</label>
-                                <input type="text" class="form-control" id="idTramCuuHoaEdit" aria-describedby="helpId" placeholder="">
+                                <select id="idTramCuuHoaEdit" class="form-control" ng-model="selectedName1" ng-options="x.name for x in dsTramCuuHoa" ng-change="updateTRamCuuHoa(selectedName1)"></select>
+
                             </div>
                             <!-- county-->
 
@@ -275,7 +351,11 @@
 
                             <div class="form-group">
                                 <label for="">Trạng thái</label>
-                                <input type="text" class="form-control" id="statusEdit" aria-describedby="helpId" placeholder="">
+                                <select class="form-control" name="statusEdit" id="statusEdit">
+                                    <option>free</option>
+                                    <option>busy</option>
+
+                                </select>
                             </div>
                         </form>
 
@@ -313,13 +393,13 @@
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th ng-click="orderbyme('id')">id</th>
-                    <th ng-click="orderbyme('name')">name</th>
-                    <th ng-click="orderbyme('idTramCuuHoa')">idTramCuuHoa</th>
-                    <th ng-click="orderbyme('capacity')">capacity</th>
-                    <th ng-click="orderbyme('maxHeight')">maxHeight</th>
-                    <th ng-click="orderbyme('size')">size</th>
-                    <th ng-click="orderbyme('status')">status</th>
+                    <th ng-click="orderbyme('id')">Mã</th>
+                    <th ng-click="orderbyme('name')">Tên</th>
+                    <th ng-click="orderbyme('idTramCuuHoa')">Trạm Cứu Hỏa</th>
+                    <th ng-click="orderbyme('capacity')">Sức Chứa</th>
+                    <th ng-click="orderbyme('maxHeight')">Chiều cao tối đa</th>
+                    <th ng-click="orderbyme('size')">Kích Thước</th>
+                    <th ng-click="orderbyme('status')">Trạng Thái</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -335,7 +415,7 @@
                     <td>{{x.size}}</td>
                     <td>{{x.status}}</td>
                     <td>
-                        <button ng-click="btnEdit(x.id)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
+                        <button ng-click="btnEdit(x.id,x.idTramCuuHoa)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">
                             Sửa
                         </button>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,16 +10,13 @@ namespace MapWeb.Controllers
     public class ThongKeController : Controller
     {
         // GET: ThongKe
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ThongKeTungKhu()
-        {
-            return View();
-        }
-
+        [CustomAuthentication]
         public ActionResult ThongKeTatCaKhu()
         {
             return View();
