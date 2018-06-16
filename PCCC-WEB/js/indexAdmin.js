@@ -1,7 +1,6 @@
-﻿
-function initMap() {
+﻿function initMap() {
     //init lat lng
-    
+
     var geoCode = {
         lat: 21.036237,
         lng: 105.790583
@@ -48,7 +47,7 @@ function initMap() {
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
 
-        console.log(marker.getPosition().lat());
+        //  console.log(marker.getPosition().lat());
         console.log(marker.getPosition().lng());
 
     })
@@ -66,7 +65,7 @@ function initMap() {
         marker.setVisible(true);
 
     }
-   
+
     $.ajax({
         type: 'GET',
         url: "http://localhost:8177/api/baochay",
@@ -88,8 +87,11 @@ function initMap() {
                         }
                     }
                 });
-                var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
-
+                var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + 
+                " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
+                
+                contentInfoWindow+= " <a data-id='" + element.id + "' class ='btn btn-danger my-2 my-sm-0' onclick='DeleteBaoChay(this)'>Xóa bỏ </a>";
+              
                 var infowindow = new google.maps.InfoWindow({
                     content: contentInfoWindow
                 });
@@ -104,22 +106,6 @@ function initMap() {
 
         }
     });
-
-
-
-
-    // test calucation distance
-    // $('#distance').click(function () {
-    //     var latitude1 = 21.0345190208582;
-    //     var longitude1 = 105.78254699707;
-    //     var latitude2 = 21.0466353629359;
-    //     var longitude2 = 105.804948806763;
-
-    //     var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(latitude1, longitude1), new google.maps.LatLng(latitude2, longitude2));
-    //     alert(distance);
-    // });
-
-
 
 
     // path
@@ -147,6 +133,7 @@ function handle(damchay) {
     console.log(damchay.id);
     var latDamChay = 0;
     var lngDamChay = 0;
+    var addressDamChay;
 
 
     var geoCode = {
@@ -167,17 +154,20 @@ function handle(damchay) {
     });
 
     // lấy lat lng của đám cháy
+
     $.ajax({
         type: 'GET',
         url: "http://localhost:8177/api/BaoChay",
         dataType: 'json',
         success: function (data) {
             data.forEach(element => {
-              
+
                 if (element.id == damchay.id) {
-                 
+
                     latDamChay = element.lat;
                     lngDamChay = element.lng;
+                    addressDamChay = element.address;
+
 
                     // set marker damchay
                     var marker = new google.maps.Marker({
@@ -195,8 +185,9 @@ function handle(damchay) {
                             }
                         }
                     });
-                    var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
-
+                    var contentInfoWindow = "<h6>" + element.address + element.county + element.city + "</h6>" + 
+                    " <button id='" + element.id + "' class ='btn btn-success my-2 my-sm-0' onclick='handle(this)' type='submit'>Xử lý</button>";
+           
                     var infowindow = new google.maps.InfoWindow({
                         content: contentInfoWindow
                     });
@@ -215,43 +206,144 @@ function handle(damchay) {
         }
     });
 
+    var listXeCuuHoa;
 
-    // show fire station
+    //get listXeCuuHoa
+
     $.ajax({
         type: 'GET',
-        url: "http://localhost:8177/api/tramcuuhoa",
+        url: "http://localhost:8177/api/xecuuhoa",
         dataType: 'json',
         success: function (data) {
-            data.forEach(element => {
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: {
-                        lat: element.lat,
-                        lng: element.lng
-                    },
-                    animation: google.maps.Animation.DROP,
-                    icon: {
-                        url: "./icon/firestation.png",
-                        scaledSize: {
-                            width: 30,
-                            height: 40
+            setTimeout(ShowFireStation(), 1000);
+            listXeCuuHoa = data;
+
+        },
+        error: function (xhr, status, err) {
+            console.log(err + "");
+
+        }
+    }); // end ajax show fire station
+
+
+
+
+    // show fire station
+    var ShowFireStation = function () {
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost:8177/api/tramcuuhoa",
+            dataType: 'json',
+            success: function (data) {
+
+                data.forEach(element => {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: {
+                            lat: element.lat,
+                            lng: element.lng
+                        },
+                        animation: google.maps.Animation.DROP,
+                        icon: {
+                            url: "./icon/firestation.png",
+                            scaledSize: {
+                                width: 30,
+                                height: 40
+                            }
                         }
+                    });
+
+                    var contentInfoWindow = "<h6>" + element.name + " " + element.address + "</h6>";
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentInfoWindow
+                    });
+                    marker.addListener('click', function () {
+                        infowindow.open(map, marker);
+                    });
+                    // show data on table
+
+                    var distance = TinhQuangDuong(latDamChay, lngDamChay, element.lat, element.lng);
+                    //var size = RecommendXeCuuHoa(addressDamChay);
+                    // var listXeCuuHoa= getXeCuuHoa(element.id, 'all');
+                    var objCar = {};
+                    var cars = [];
+                    listXeCuuHoa.forEach(xecuuhoa => {
+                        if (xecuuhoa.idTramCuuHoa == element.id) {
+                            objCar = xecuuhoa;
+                            cars.push(objCar);
+                        }
+                    });
+
+                    FillTable(element.name, element.address, element.phone, distance, cars, addressDamChay);
+
+
+
+                }) // end for each
+
+            },
+            error: function (xhr, status, err) {
+                console.log(err + "");
+
+            }
+        }); // end ajax show fire station
+
+    }
+
+}
+
+function RecommendXeCuuHoa(addressDamChay) {
+    var address = addressDamChay.toLowerCase();
+
+    if (address.includes("nghách") ||
+        address.includes("ngõ") ||
+        address.includes("hẻm")) {
+        return 's' // size s
+    } else if (address.includes("chung cư") ||
+        address.includes("sân vận động")) {
+
+        return 'l' // size l
+    } else {
+        return 'all'
+    }
+}
+
+function TinhQuangDuong(lat1, lng1, lat2, lng2) {
+
+    return google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lng1), new google.maps.LatLng(lat2, lng2));
+
+}
+
+
+// call xecuuhoa
+function getXeCuuHoa(idTramCuuHoa, size) {
+    var list = [];
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8177/api/xecuuhoa",
+        dataType: 'json',
+        success: function (data) {
+
+            if (size != 'all') {
+                data.forEach(element => {
+                    if (element.idTramCuuHoa == idTramCuuHoa &&
+                        element.size == size) {
+                        list.push(element);
+
                     }
-                });
+                }) // end for each
 
-                var contentInfoWindow = "<h6>" + element.name + " " + element.address + "</h6>";
+            } else {
+                data.forEach(element => {
+                    if (element.idTramCuuHoa == idTramCuuHoa) {
+                        list.push(element);
 
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentInfoWindow
-                });
-                marker.addListener('click', function () {
-                    infowindow.open(map, marker);
-                });
-                // show data on table
+                    }
+                }) // end for each
 
-                TinhQuangDuong(latDamChay, lngDamChay, element.lat, element.lng, element.name, element.address, element.phone);
+            }
 
-            })
+
             // call function
 
         },
@@ -261,70 +353,157 @@ function handle(damchay) {
         }
     }); // end ajax show fire station
 
+
+    return list;
+
 }
 
 
-function TinhQuangDuong(lat1, lng1, lat2, lng2, name, address, phone) {
-    //show table
+
+function FillTable(name, address, phone, distance, cars, addressDamChay) {
+
+    var str = "";
+    var size = RecommendXeCuuHoa(addressDamChay);
+    cars.forEach(element => {
+        var info = "Size:  " + element.size + " | Capacity:  " + element.capacity + " | MaxHeight:  " + element.maxHeight;
+        if (element.status == 'free' && element.size == size) {
+            str += "<span data-toggle='modal' data-target='#modalCar'> <a id=" + element.id + " data-toggle='tooltip'data-placement='top' title='" + info + "' class='badge badge-success' onclick=pickCar(this)>" + element.name + "</a></span>";
+        } else if (element.status == 'busy') {
+            str += "<span data-toggle='modal' data-target='#modalCar'> <a id=" + element.id + " data-toggle='tooltip' data-placement='top' title='" + info + "' class='badge badge-danger' onclick=pickCar(this)>" + element.name + "</a></span>";
+        } else if (element.status == 'free') {
+            str += "<span data-toggle='modal' data-target='#modalCar'> <a id=" + element.id + " data-toggle='tooltip'data-placement='top' title='" + info + "' class='badge badge-primary' onclick=pickCar(this)> " + element.name + "</a></span>";
+        }
+
+    });
+
     $('#myTable').removeAttr("style");
-    var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lng1), new google.maps.LatLng(lat2, lng2));
-    $('#datarow').append("<tr><td>" + name + " " + address + "</td> <td>" + phone + " </td><td>" + distance / 1000 + " </td></tr>");
-    
+
+    $('#datarow').append("<tr><td>" + name + " " + address + "</td> <td>" + phone + " </td><td>" + distance / 1000 + " </td><td>" + str + " </td></tr>");
 }
 
+function pickCar(item) {
+    console.log(item.id);
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8177/api/xecuuhoa",
+        dataType: "json",
+        success: function (data) {
+            data.forEach(element => {
+                if (element.id == item.id) {
+                    $('#pickCarId').val(element.id);
+                    $('#pickCarName').val(element.name);
+                    $('#pickCarSize').val(element.size);
+                }
+            });
+
+        }
+    });
+
+
+}
 
 function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("myTable");
-  switching = true;
-  //Set the sorting direction to ascending:
-  dir = "asc"; 
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.getElementsByTagName("TR");
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
-    for (i = 1; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      /*check if the two rows should switch place,
-      based on the direction, asc or desc:*/
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch= true;
-          break;
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+        // Start by saying: no switching is done:
+        switching = false;
+        rows = table.getElementsByTagName("TR");
+        /* Loop through all table rows (except the
+        first, which contains table headers): */
+        for (i = 1; i < (rows.length - 1); i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            /* Get the two elements you want to compare,
+            one from current row and one from the next: */
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /* Check if the two rows should switch place,
+            based on the direction, asc or desc: */
+            if (dir == "asc") {
+            
+                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    // If so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+             
+                 if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    // If so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            }
         }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        if (shouldSwitch) {
+            /* If a switch has been marked, make the switch
+            and mark that a switch has been done: */
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            // Each time a switch is done, increase this count by 1:
+            switchcount++;
+        } else {
+            /* If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again. */
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+
+function sortNumberTable(){
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("myTable");
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+      //start by saying: no switching is done:
+      switching = false;
+      rows = table.getElementsByTagName("TR");
+      /*Loop through all table rows (except the
+      first, which contains table headers):*/
+      for (i = 1; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("TD")[2];
+        y = rows[i + 1].getElementsByTagName("TD")[2];
+        //check if the two rows should switch place:
+        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
           //if so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
         }
       }
-    }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
-    } else {
-      /*If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again.*/
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
       }
     }
-  }
 }
 
+function DeleteBaoChay(node){
+
+    var id = node.getAttribute("data-id");
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8177/api/baochay/" + id,
+        dataType: "text",
+        success: function (response) {
+            console.log("xóa thành công");
+            initMap();
+        }
+    });
+}

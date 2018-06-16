@@ -221,6 +221,7 @@
     <Compile Include="Controllers\DamChayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\TramCuuHoaController.cs" />
     <Compile Include="Controllers\TruNuocController.cs" />
