@@ -12,7 +12,7 @@ CREATE TABLE TramCuuHoa(
 	lat FLOAT NOT NULL,
 	lng FLOAT NOT NULL,
 );
-GO
+go
 CREATE TABLE XeCuuHoa(
 	id INT IDENTITY	PRIMARY KEY,
 	name NVARCHAR(100) NOT NULL,
@@ -70,33 +70,32 @@ GO
 --//////////////////////////////////////////////////// INSERT
 --- đám cháy
 --- nam từ liêm
-INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Sân Vận Động Mĩ Đình Đường Lê Đức Thọ, Mỹ Đình' , 200 , '2018-05-15' ,  21.0203787047367 , 105.763943195343 ,NULL )
-INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trại Giam Hỏa Lò, Phúc Diễn, Xuân Phương' , 200 , '2018-03-15' ,  21.0229024288996 , 105.752291679382,NULL  )
-INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Bảo tàng hà nội ,Phạm Hùng, Mễ Trì' , 400 , '2018-02-15' ,  21.0100430077698 , 105.786334276199,NULL  )
-INSERT dbo.DamChay VALUES  ( 4 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trung tâm hội nghị quốc gia Phạm Hùng, Mễ Trì' , 300 , '2018-01-15' ,  21.0064173319907 , 105.787128210068,NULL  )
-INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Liên đoàn bóng đá việt nam, phú đô' , 300 , '2018-02-10' ,  21.0163126148461 , 105.769275426865,NULL  )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Sân Vận Động Mĩ Đình Đường Lê Đức Thọ, Mỹ Đình' , 200 , '2018-05-15' ,  21.0203787047367 , 105.763943195343  )
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trại Giam Hỏa Lò, Phúc Diễn, Xuân Phương' , 200 , '2018-03-15' ,  21.0229024288996 , 105.752291679382 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Bảo tàng hà nội ,Phạm Hùng, Mễ Trì' , 400 , '2018-02-15' ,  21.0100430077698 , 105.786334276199 )
+INSERT dbo.DamChay VALUES  ( 4 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trung tâm hội nghị quốc gia Phạm Hùng, Mễ Trì' , 300 , '2018-01-15' ,  21.0064173319907 , 105.787128210068 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Liên đoàn bóng đá việt nam, phú đô' , 300 , '2018-02-10' ,  21.0163126148461 , 105.769275426865 )
 --
-INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trường THPT Nguyễn Thị Minh Khai, Phúc Diễn' , 600 , '2018-03-15' ,  21.0467054546092 , 105.751047134399,NULL   )
-INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Ký túc xá Mỹ Đình, Hàm Nghi, Mỹ Đình' , 200 , '2018-02-19' ,  21.0342736797851 , 105.766394734383,NULL  )
-INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Chi cục thuế Quận Nam Từ Liêm, Số 4 Nguyễn Cơ Thạch Quận Nam, Mỹ Đình ' , 400 , '2018-02-22' ,  21.038379334347 , 105.767183303833,NULL  )
-INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trung Tâm Viettel Nam Từ Liêm, 280 Hồ Tùng Mậu, Cầu Diễn' , 300 , '2018-03-11' ,  21.0409878682762 , 105.765670537949,NULL  )
-INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Ngõ 136 Hồ Tùng Mậu' , 300 , '2018-03-10' ,  21.0407275176138 , 105.768052339554,NULL  )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trường THPT Nguyễn Thị Minh Khai, Phúc Diễn' , 600 , '2018-03-15' ,  21.0467054546092 , 105.751047134399  )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Ký túc xá Mỹ Đình, Hàm Nghi, Mỹ Đình' , 200 , '2018-02-19' ,  21.0342736797851 , 105.766394734383 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Chi cục thuế Quận Nam Từ Liêm, Số 4 Nguyễn Cơ Thạch Quận Nam, Mỹ Đình ' , 400 , '2018-02-22' ,  21.038379334347 , 105.767183303833 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Trung Tâm Viettel Nam Từ Liêm, 280 Hồ Tùng Mậu, Cầu Diễn' , 300 , '2018-03-11' ,  21.0409878682762 , 105.765670537949 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Nam Từ Liêm' , N'Ngõ 136 Hồ Tùng Mậu' , 300 , '2018-03-10' ,  21.0407275176138 , 105.768052339554 )
 
 --- cầu giấy
-INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Chợ Nam Trung Yên ' , 300 , '2018-03-11' ,  21.0128172913299, 105.788340568542,NULL  )
-INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Keangnam Hanoi Landmark Tower, Phạm Hùng' , 900 , '2018-03-11' ,  21.0167532801909, 105.783877372742,NULL  )
-INSERT dbo.DamChay VALUES  ( 4 ,  N'Hà Nội' , N'Cầu Giấy' , N'Trường Đại học Thương mại ,79 Hồ Tùng Mậu, Mai Dịch' , 400 , '2018-03-24' ,  21.0373979930592, 105.774908065796,NULL  )
-INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Truyền Hình CAND ANTV, Lê Đức Thọ, Mai Dịch' , 400 , '2018-03-21' ,  21.0370274849735, 105.771482884884,NULL  )
-INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'Bệnh viện 198 , 9 Trần Bình, Mai Dịch,' , 500 , '2018-03-26' , 21.0334124793512, 105.778840184212,NULL  )
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Chợ Nam Trung Yên ' , 300 , '2018-03-11' ,  21.0128172913299, 105.788340568542 )
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Keangnam Hanoi Landmark Tower, Phạm Hùng' , 900 , '2018-03-11' ,  21.0167532801909, 105.783877372742 )
+INSERT dbo.DamChay VALUES  ( 4 ,  N'Hà Nội' , N'Cầu Giấy' , N'Trường Đại học Thương mại ,79 Hồ Tùng Mậu, Mai Dịch' , 400 , '2018-03-24' ,  21.0373979930592, 105.774908065796 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Truyền Hình CAND ANTV, Lê Đức Thọ, Mai Dịch' , 400 , '2018-03-21' ,  21.0370274849735, 105.771482884884 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'Bệnh viện 198 , 9 Trần Bình, Mai Dịch,' , 500 , '2018-03-26' , 21.0334124793512, 105.778840184212 )
 --
-INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Trường Cao đẳng Múa Việt Nam , Mai Dịch ' , 300 , '2018-03-17', 21.0381390064661, 105.775541067123,NULL  )
-INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Ngõ 76 Mai Dịch' , 100 , '2018-03-24' ,  21.0408076255584, 105.775964856148,NULL  )
+INSERT dbo.DamChay VALUES  ( 3 ,  N'Hà Nội' , N'Cầu Giấy' , N'Trường Cao đẳng Múa Việt Nam , Mai Dịch ' , 300 , '2018-03-17', 21.0381390064661, 105.775541067123 )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Ngõ 76 Mai Dịch' , 100 , '2018-03-24' ,  21.0408076255584, 105.775964856148 )
 
-INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Học viện Báo chí và Tuyên truyền, 36 Xuân Thủy, Dịch Vọng Hậu' , 400 , '2018-03-24' , 21.0365618451266 , 105.788823366165,NULL  )
-INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'KFC Cầu Giấy , 372-374 Cầu Giấy, Dịch Vọng' , 200 , '2018-03-11' ,  21.0360135898928, 105.79142510891,NULL  )
-INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'Chợ Nghĩa Tân,' , 500 , '2018-03-24' , 21.0448780537743, 105.794603526592,NULL  )
+INSERT dbo.DamChay VALUES  ( 2 ,  N'Hà Nội' , N'Cầu Giấy' , N'Học viện Báo chí và Tuyên truyền, 36 Xuân Thủy, Dịch Vọng Hậu' , 400 , '2018-03-24' , 21.0365618451266 , 105.788823366165 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'KFC Cầu Giấy , 372-374 Cầu Giấy, Dịch Vọng' , 200 , '2018-03-11' ,  21.0360135898928, 105.79142510891 )
+INSERT dbo.DamChay VALUES  ( 1 ,  N'Hà Nội' , N'Cầu Giấy' , N'Chợ Nghĩa Tân,' , 500 , '2018-03-24' , 21.0448780537743, 105.794603526592 )
 GO
-y
 --------------------- Trạm Chữa Cháy
  INSERT dbo.TramCuuHoa(name, phone, address, lat, lng )
  VALUES  (N'Trạm cứu hỏa Xuân Thủy','0165252525',N'Cầu Giấy', 21.0366619828509, 105.786226987839)
@@ -263,36 +262,24 @@ insert dbo.XeCuuHoa values (N'xe 63', 7, 5000, 50, 'm', 'free');
 insert dbo.XeCuuHoa values (N'xe 64', 8, 5000, 50, 'm', 'busy');
 insert dbo.XeCuuHoa values (N'xe 65', 13, 3000, 30, 's', 'free');
 GO
+-- thêm account
+INSERT dbo.Account
+        ( username, password, displayName )
+VALUES  ( 'admin', -- username - varchar(100)
+          'admin', -- password - varchar(100)
+          N'ADMIN'  -- displayName - nvarchar(100)
+          )
 
---------query
-/*
+INSERT dbo.Account
+        ( username, password, displayName )
+VALUES  ( 'admin1', -- username - varchar(100)
+          'admin1', -- password - varchar(100)
+          N'ADMIN1'  -- displayName - nvarchar(100)
+          )
 
-
-SELECT * FROM dbo.DamChay
-
-UPDATE dbo.DamChay SET level=3,city=N'Hà Nội',county=N'Cầu Giấy',address=N'Chợ Nghĩa Tân',damages=500,date='2018-03-24',lat=21.0448780537743,lng=105.794603526592 WHERE id=25
-
-GO
-SELECT * FROM dbo.TramCuuHoa
-GO
-UPDATE dbo.TramCuuHoa	SET name=N'',phone='',address=N'',lat=3,lng=4 WHERE id=2
-GO
-SELECT * FROM dbo.TruNuoc
-GO
-UPDATE dbo.TruNuoc SET city=N'',county=N'',address=N'',lat=,lng= WHERE id=
-SELECT * FROM dbo.XeCuuHoa
-GO
-UPDATE dbo.XeCuuHoa SET	name=N'xe 1',idTramCuuHoa=3,capacity=8000,maxHeight=80,size='l',status='fress' WHERE id=2
-
-
-*/
-
-
-
-
--- test bảng báo cháy
+go
 --thủ tục
-ALTER PROC ThongKeTungKhu(@date1 DATETIME,@date2 DATETIME, @khuvuc NVARCHAR(50))
+CREATE PROC ThongKeTungKhu(@date1 DATETIME,@date2 DATETIME, @khuvuc NVARCHAR(50))
 AS
 BEGIN
 	SELECT address AS diachi ,COUNT(*) AS sovuchay, SUM(damages) AS thiethai  FROM dbo.DamChay 
@@ -300,12 +287,13 @@ BEGIN
 	GROUP BY address
 END
 GO 
-ALTER PROC ThongKeTatCaKhu(@date1 DATETIME,@date2 DATETIME)
+CREATE PROC ThongKeTatCaKhu(@date1 DATETIME,@date2 DATETIME)
 AS
 BEGIN
 	SELECT county AS diachi,COUNT(*) AS sovuchay , SUM(damages) AS thiethai FROM dbo.DamChay WHERE  date BETWEEN  @date1 AND @date2
 GROUP BY county
 END
+
 
 EXECUTE dbo.ThongKeTungKhu @date1 = '2018-01-1', -- datetime
     @date2 = '2018-05-23 04:04:50', -- datetime
@@ -324,3 +312,44 @@ WHERE id=
 
 
 
+=======
+--EXECUTE dbo.ThongKeTungKhu @date1 = '2018-01-1',  @date2 = '2018-05-23',  @khuvuc = N'Nam Từ Liêm' -- nvarchar(50)
+
+
+--EXEC	ThongKeTatCaKhu @date1 = '2018-01-1',  @date2 = '2018-05-23 04:04:50' -- datetime
+
+
+--------query
+/*
+	SELECT * FROM  dbo.TramCuuHoa
+SELECT * FROM dbo.XeCuuHoa
+SELECT * FROM dbo.DamChay
+SELECT * FROM dbo.Account
+SELECT * FROM dbo.BaoChay 
+SELECT * FROM dbo.TruNuoc 
+
+*/
+
+
+-- tạo bảng Notification (được thêm vào khi insert vào bảng báo cháy)
+
+CREATE TABLE notice(
+	id INT IDENTITY PRIMARY KEY,
+	mess NVARCHAR(100) DEFAULT N'Có cháy'
+
+);
+
+--DROP TABLE dbo.Notification
+go
+CREATE TRIGGER addNotification ON dbo.BaoChay FOR INSERT
+AS
+BEGIN
+DECLARE @address NVARCHAR(100)
+
+	SELECT @address=(Inserted.address+', '+Inserted.county+', '+Inserted.city) FROM Inserted
+	INSERT dbo.notice VALUES  ( @address )
+END
+GO
+
+
+	

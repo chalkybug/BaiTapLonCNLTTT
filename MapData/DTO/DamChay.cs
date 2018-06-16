@@ -13,8 +13,8 @@ namespace MapData.DTO
         public int level { get; set; }
         public string city { get; set; }
         public string county { get; set; }
-        public string address { get; set; }
         public float damages { get; set; }
+        public string address { get; set; }
         public DateTime date { get; set; }
         public float lat { get; set; }
         public float lng { get; set; }

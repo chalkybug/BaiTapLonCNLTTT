@@ -1,4 +1,4 @@
-﻿using MapData.DTO;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,30 +12,14 @@ namespace MapApi.Controllers
 {
     public class ThongKeController : ApiController
     {
-        ThongKeBUS tkbus = new ThongKeBUS();
-        //public IHttpActionResult Get(string date1, string date2, string khuvuc)
-        //{
-        //    DataTable dt = new DataTable();
-        //    dt = tkbus.ThongKe( date1,  date2,  khuvuc);
-        //    return Ok(dt);
-        //}
-        //public IHttpActionResult Get(string date1, string date2)
-        //{
-        //    DataTable dt = new DataTable();
-        //    dt = tkbus.ThongKeTatCaKhu(date1, date2);
-        //    return Ok(dt);
-        //}
+
         public IHttpActionResult Get()
         {
             DataTable dt = new DataTable();
             dt = tkbus.GetData();
             return Ok(dt);
         }
-        //public IHttpActionResult GetKhuVuc()
-        //{
-        //    List<ThongKe> item = ThongKeBUS.Instance.GetKhuVuc();
-        //    return Ok(item);
-        //}
+
         [HttpGet]
         public IHttpActionResult ThongKeTungKhu(string date1, string date2, string khuvuc)
         {
@@ -44,6 +28,7 @@ namespace MapApi.Controllers
             return Ok(list);
         }
 
+
         [HttpGet]
         public IHttpActionResult ThongKeTatCaKhu(string date1, string date2)
         {
@@ -51,7 +36,7 @@ namespace MapApi.Controllers
 
             return Ok(list);
         }
-        
+
     }
 }
 

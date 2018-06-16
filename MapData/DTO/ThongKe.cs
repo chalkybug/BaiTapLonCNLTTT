@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace MapData.DTO
 {
+
      public class ThongKe
+
     {
         public string address { get; set; }
         public int count { get; set; }

@@ -24,6 +24,7 @@ namespace MapWinForm
         private void loaddata()
         {
             DataTable dt = new DataTable();
+
             dt = DamChayBUS.Instance.ShowTable();
             dataGridView1.DataSource = dt;
         }
