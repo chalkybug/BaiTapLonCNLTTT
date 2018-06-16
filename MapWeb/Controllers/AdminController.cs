@@ -12,15 +12,23 @@ namespace MapWeb.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+       
+
         [CustomAuthentication]
         public ActionResult Index()
         {
+            MapWeb.Models.Notification.Instance.inti();
+
             return View();
         }
 
-
+        [AllowAnonymous]
         public ActionResult Login()
         {
+            if (MySession.isLogin(GroupName.ADMIN_GROUP))
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
 
@@ -79,10 +87,20 @@ namespace MapWeb.Controllers
 
         }
 
+
         [AllowAnonymous]
         public ActionResult Notification()
         {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            if (MySession.isLogin(GroupName.ADMIN_GROUP))
+            {
+                MySession.logout(GroupName.ADMIN_GROUP);
+            }
+            return RedirectToAction("Login");
         }
 
     }

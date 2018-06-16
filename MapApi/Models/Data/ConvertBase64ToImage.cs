@@ -45,7 +45,7 @@ namespace MapApi.Models
                 Image pic = Image.FromStream(ms, true);
                 pic.Save(pathImage);
             }
-            return pathImage;
+            return pathImage.Replace("\\", "//");
         }
 
 

@@ -20,18 +20,34 @@
         var app = angular.module("myApp", []);
 
         app.controller("myCtrl", function ($scope, $http) {
+
+            
             $http.get("http://localhost:8177/api/damchay").then(function (response) {
                 $scope.dsdamchay = response.data;
-            });
+                
+            }).then(function () {
+               
+                setTimeout(() => {    //<<<---    using ()=> syntax
+                    $scope.changeURL();
+                }, 500);
+                
+            })
 
             $http.get("http://localhost:8177/api/baochay").then(function (response) {
                 $scope.dsBaoChay = response.data;
+             
             });
 
             $scope.loadData = function () {
                 $http.get("http://localhost:8177/api/damchay").then(function (response) {
                     $scope.dsdamchay = response.data;
-                });
+                }).then(function () {
+
+                    setTimeout(() => {    //<<<---    using ()=> syntax
+                        $scope.changeURL();
+                    }, 500);
+
+                })
             }
             $scope.create = function () {
                 $.ajax({
@@ -179,6 +195,34 @@
             $scope.orderbyme = function (x) {
                 $scope.myOrderBy = x;
             }
+            //handle changeURL image
+            $scope.changeURL = function () {
+
+                var arr = $("img[src*='BaiTap']");
+                console.log(arr);
+                for (var i = 0; i < arr.length; i++) {
+                    var url = arr[i].getAttribute("src");
+
+                    var res = $scope.change(url);
+
+                    arr[i].setAttribute("src", res)
+                }
+             
+
+            }
+
+            $scope.change = function (str) {
+                var index = str.indexOf("BaiTapLonCNLTTT");
+
+                var s1 = str.substring(index, str.length);
+
+                var http = "http://127.0.0.1:8888/";
+
+                var res = (http + s1);
+                return res;
+            }
+
+
         });
     </script>
 
@@ -190,15 +234,15 @@
 
 <body ng-app="myApp" ng-controller="myCtrl">
 
-   
+
     <!-- test angular-->
     <div class="container">
-     
+
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Quản Lý Đám Cháy</h1>
                     </div>
                 </div>
             </div>
@@ -242,24 +286,24 @@
 
 
                                         <div class="form-group">
-                                            <label for="">level</label>
+                                            <label for="">Cấp Độ</label>
                                             <input type="text" class="form-control" id="levelCreate" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- city-->
 
                                         <div class="form-group">
-                                            <label for="">city</label>
+                                            <label for="">Thành Phố</label>
                                             <input type="text" class="form-control" id="cityCreate" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- county-->
 
                                         <div class="form-group">
-                                            <label for="">county</label>
+                                            <label for="">Quận</label>
                                             <input type="text" class="form-control" id="countyCreate" aria-describedby="helpId" placeholder="">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="">damages</label>
+                                            <label for="">Thiệt hại</label>
                                             <input type="text" class="form-control" id="damagesCreate" aria-describedby="helpId" placeholder="">
                                         </div>
                                     </div>
@@ -268,7 +312,7 @@
                                         <!-- lat-->
 
                                         <div class="form-group">
-                                            <label for="">address</label>
+                                            <label for="">Địa Chỉ</label>
                                             <input type="text" class="form-control" id="addressCreate" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- lng-->
@@ -276,7 +320,7 @@
 
                                         <div class="form-group">
                                             <div class="input-append datetimepicker">
-                                                <label for="">date</label>
+                                                <label for="">Ngày Cháy</label>
                                                 <input data-format="yyyy-MM-dd" id="dateCreate" type="text"></input>
                                                 <span class="add-on">
 
@@ -291,18 +335,18 @@
                                         <!-- lat-->
 
                                         <div class="form-group">
-                                            <label for="">lat</label>
+                                            <label for="">Vĩ độ</label>
                                             <input type="text" class="form-control" id="latCreate" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- lng-->
 
                                         <div class="form-group">
-                                            <label for="">lng</label>
+                                            <label for="">Kinh Độ</label>
                                             <input type="text" class="form-control" id="lngCreate" aria-describedby="helpId" placeholder="">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="">image</label>
+                                            <label for="">Ảnh</label>
                                             <input type="text" class="form-control" id="imageCreate" aria-describedby="helpId" placeholder="">
                                         </div>
                                     </div>
@@ -343,39 +387,39 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="">level</label>
+                                            <label for="">Cấp độ</label>
                                             <input type="text" class="form-control" id="levelEdit" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- city-->
 
                                         <div class="form-group">
-                                            <label for="">city</label>
+                                            <label for="">Thành Phố</label>
                                             <input type="text" class="form-control" id="cityEdit" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- county-->
 
                                         <div class="form-group">
-                                            <label for="">county</label>
+                                            <label for="">Quận</label>
                                             <input type="text" class="form-control" id="countyEdit" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- address-->
 
                                         <div class="form-group">
-                                            <label for="">damages</label>
+                                            <label for="">Thiệt Hại</label>
                                             <input type="text" class="form-control" id="damagesEdit" aria-describedby="helpId" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
 
                                         <div class="form-group">
-                                            <label for="">address</label>
+                                            <label for="">Địa Chỉ</label>
                                             <input type="text" class="form-control" id="addressEdit" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- lng-->
 
                                         <div class="form-group">
                                             <div class="input-append datetimepicker">
-                                                <label for="">date</label>
+                                                <label for="">Ngày Cháy</label>
                                                 <input data-format="yyyy-MM-dd" id="dateEdit" type="text"></input>
                                                 <span class="add-on">
 
@@ -388,18 +432,18 @@
                                         <!-- lat-->
 
                                         <div class="form-group">
-                                            <label for="">lat</label>
+                                            <label for="">Vĩ Độ</label>
                                             <input type="text" class="form-control" id="latEdit" aria-describedby="helpId" placeholder="">
                                         </div>
                                         <!-- lng-->
 
                                         <div class="form-group">
-                                            <label for="">lng</label>
+                                            <label for="">Kinh độ</label>
                                             <input type="text" class="form-control" id="lngEdit" aria-describedby="helpId" placeholder="">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="">image</label>
+                                            <label for="">Ảnh</label>
                                             <input type="text" class="form-control" id="imageEdit" aria-describedby="helpId" placeholder="">
                                         </div>
                                     </div>
@@ -445,16 +489,16 @@
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th ng-click="orderbyme('id')">id</th>
-                    <th ng-click="orderbyme('level')">level</th>
-                    <th ng-click="orderbyme('city')">city</th>
-                    <th ng-click="orderbyme('county')">county</th>
-                    <th ng-click="orderbyme('damages')">damages</th>
-                    <th ng-click="orderbyme('address')">address</th>
-                    <th ng-click="orderbyme('date')">date</th>
-                    <th ng-click="orderbyme('lat')">lat</th>
-                    <th ng-click="orderbyme('lng')">lng</th>
-                    <th ng-click="orderbyme('image')">image</th>
+                    <th ng-click="orderbyme('id')">Mã</th>
+                    <th ng-click="orderbyme('level')">Cấp Độ</th>
+                    <th ng-click="orderbyme('city')">Thành Phố</th>
+                    <th ng-click="orderbyme('county')">Quận</th>
+                    <th ng-click="orderbyme('damages')">Thiệt Hại</th>
+                    <th ng-click="orderbyme('address')">Địa Chỉ</th>
+                    <th ng-click="orderbyme('date')">Ngày Cháy</th>
+                    <th ng-click="orderbyme('lat')">Vĩ Độ</th>
+                    <th ng-click="orderbyme('lng')">Kinh Độ</th>
+                    <th ng-click="orderbyme('image')">Ảnh</th>
                     <th></th>
                     <th></th>
                 </tr>
