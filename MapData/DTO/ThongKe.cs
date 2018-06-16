@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace MapData.DTO
 {
-    public class ThongKe
+
+     public class ThongKe
+
     {
         public string address { get; set; }
         public int count { get; set; }
@@ -25,7 +27,7 @@ namespace MapData.DTO
             this.address = row["diachi"].ToString();
             this.damages = float.Parse(row["thiethai"].ToString());
             this.count = int.Parse(row["sovuchay"].ToString());
-          
+
         }
         public ThongKe() { }
     }

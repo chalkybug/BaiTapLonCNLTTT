@@ -37,7 +37,7 @@ namespace MapData.DAO
             }
         }
 
-
+       
         public List<XeCuuHoa> GetList()
         {
             List<XeCuuHoa> list = new List<XeCuuHoa>();
@@ -67,6 +67,7 @@ namespace MapData.DAO
 
             return 1;
         }
+        
         public int Update(int id, string name, int idTramCuuHoa, float capacity, float maxHeight, string size, string status)
         {
             string query = $"UPDATE dbo.XeCuuHoa SET	name=N'{name}',idTramCuuHoa={idTramCuuHoa},capacity={capacity},maxHeight={maxHeight},size='{size}',status='{status}' WHERE id ={id}";

@@ -63,5 +63,10 @@ namespace GoogleMap
             marker.ToolTipText = $"Location: {lat} and {lng}";
             start = new PointLatLng(Convert.ToDouble(txtLat.Text), Convert.ToDouble(txtLng.Text));
         }
+
+        private void gMapControl1_OnMarkerClick(GMapMarker item, MouseEventArgs e)
+        {
+            MessageBox.Show(item.ToolTipText.ToString());
+        }
     }
 }

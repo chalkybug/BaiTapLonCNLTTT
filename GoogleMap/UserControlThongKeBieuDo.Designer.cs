@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chartThongKeThietHai = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,30 +48,30 @@
             // 
             // chartThongKeThietHai
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartThongKeThietHai.ChartAreas.Add(chartArea3);
+            chartArea2.Name = "ChartArea1";
+            this.chartThongKeThietHai.ChartAreas.Add(chartArea2);
             this.chartThongKeThietHai.Dock = System.Windows.Forms.DockStyle.Left;
-            legend3.Name = "Legend1";
-            this.chartThongKeThietHai.Legends.Add(legend3);
+            legend2.Name = "Legend1";
+            this.chartThongKeThietHai.Legends.Add(legend2);
             this.chartThongKeThietHai.Location = new System.Drawing.Point(0, 0);
             this.chartThongKeThietHai.Name = "chartThongKeThietHai";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.IsValueShownAsLabel = true;
-            series3.LabelFormat = "c";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartThongKeThietHai.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.LabelFormat = "c";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartThongKeThietHai.Series.Add(series2);
             this.chartThongKeThietHai.Size = new System.Drawing.Size(593, 488);
             this.chartThongKeThietHai.TabIndex = 1;
             this.chartThongKeThietHai.Text = "Thống kê thiệt hại";
-            title3.Alignment = System.Drawing.ContentAlignment.BottomCenter;
-            title3.BorderWidth = 2;
-            title3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title3.Name = "Title1";
-            title3.Text = "Biểu đồ thống kê thiệt hại";
-            this.chartThongKeThietHai.Titles.Add(title3);
+            title2.Alignment = System.Drawing.ContentAlignment.BottomCenter;
+            title2.BorderWidth = 2;
+            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "Title1";
+            title2.Text = "Biểu đồ thống kê thiệt hại";
+            this.chartThongKeThietHai.Titles.Add(title2);
             // 
             // panel1
             // 
@@ -160,14 +160,19 @@
             // 
             // btnThongKeThietHai
             // 
+            this.btnThongKeThietHai.BackColor = System.Drawing.Color.Maroon;
+            this.btnThongKeThietHai.FlatAppearance.BorderColor = System.Drawing.Color.Azure;
+            this.btnThongKeThietHai.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnThongKeThietHai.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnThongKeThietHai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThongKeThietHai.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKeThietHai.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThongKeThietHai.Location = new System.Drawing.Point(139, 323);
             this.btnThongKeThietHai.Name = "btnThongKeThietHai";
             this.btnThongKeThietHai.Size = new System.Drawing.Size(107, 44);
             this.btnThongKeThietHai.TabIndex = 5;
             this.btnThongKeThietHai.Text = "Thống kê thiệt hại";
-            this.btnThongKeThietHai.UseVisualStyleBackColor = true;
+            this.btnThongKeThietHai.UseVisualStyleBackColor = false;
             this.btnThongKeThietHai.Click += new System.EventHandler(this.btnThongKeThietHai_Click);
             // 
             // UserControlThongKeBieuDo

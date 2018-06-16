@@ -294,6 +294,25 @@ BEGIN
 GROUP BY county
 END
 
+
+EXECUTE dbo.ThongKeTungKhu @date1 = '2018-01-1', -- datetime
+    @date2 = '2018-05-23 04:04:50', -- datetime
+    @khuvuc = N'Nam Từ Liêm' -- nvarchar(50)
+	
+
+SELECT id,name,capacity,maxHeight,size,status FROM dbo.XeCuuHoa
+WHERE idTramCuuHoa='1' AND status='free'
+
+SELECT * FROM dbo.TramCuuHoa
+
+GO
+UPDATE dbo.XeCuuHoa
+SET status='busy'
+WHERE id=
+
+
+
+=======
 --EXECUTE dbo.ThongKeTungKhu @date1 = '2018-01-1',  @date2 = '2018-05-23',  @khuvuc = N'Nam Từ Liêm' -- nvarchar(50)
 
 

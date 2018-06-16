@@ -38,7 +38,15 @@ namespace MapData.DAO
             }
         }
 
-        public List<ThongKe> ThongKeTungKhu(string date1, string date2,string khuvuc)
+
+
+        public DataTable GetData()
+        {
+            DataTable dt = DataProvider.Instance.GetData("select county from damchay group by county");
+            return dt;
+        }
+
+        public List<ThongKe> ThongKeTungKhu(string date1, string date2, string khuvuc)
         {
             List<ThongKe> list = new List<ThongKe>();
 
@@ -46,7 +54,7 @@ namespace MapData.DAO
             foreach (DataRow item in data.Rows)
             {
                 ThongKe obj = new ThongKe(item);
-                
+
                 list.Add(obj);
             }
             return list;
@@ -60,10 +68,11 @@ namespace MapData.DAO
             foreach (DataRow item in data.Rows)
             {
                 ThongKe obj = new ThongKe(item);
+
                 list.Add(obj);
             }
             return list;
         }
-       
+
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GoogleMap;
 
 namespace GoogleMap
 {
@@ -44,12 +45,14 @@ namespace GoogleMap
         {
             AnHien(false);
             palTruNuoc.Visible = true;
+            userControlTruNuoc11.BringToFront();
         }
 
         private void btnXeCuuHoa_Click(object sender, EventArgs e)
         {
             AnHien(false);
             palXeCuuHoa.Visible = true;
+            userControlXeCuuHoa1.BringToFront();
         }
     }
 }

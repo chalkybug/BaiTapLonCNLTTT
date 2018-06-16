@@ -58,5 +58,10 @@ namespace GoogleMap
             tch.txtLng.Text = lngg.ToString();
             this.Hide();
         }
+
+        private void frmMapChonDiemTramCuuHoa_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -68,6 +68,7 @@
             this.Controls.Add(this.gMapControl1);
             this.Name = "frmMapChonDiemTramCuuHoa";
             this.Text = "frmMapChonDiemTramCuuHoa";
+            this.Load += new System.EventHandler(this.frmMapChonDiemTramCuuHoa_Load);
             this.ResumeLayout(false);
 
         }

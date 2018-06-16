@@ -37,14 +37,20 @@ namespace MapData.BUS
             }
         }
 
+        public DataTable GetData()
+        {
+            return ThongKeDAO.Instance.GetData();
+        }
+
         public List<ThongKe> ThongKeTungKhu(string date1, string date2, string khuvuc)
         {
             return ThongKeDAO.Instance.ThongKeTungKhu(date1, date2, khuvuc);
         }
+
         public List<ThongKe> ThongKeTatCaKhu(string date1, string date2)
         {
             return ThongKeDAO.Instance.ThongKeTatCaKhu(date1, date2);
         }
-       
+   
     }
 }

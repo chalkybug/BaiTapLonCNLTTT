@@ -38,7 +38,7 @@ namespace MapData.BUS
             }
         }
 
-
+        
         public List<XeCuuHoa> GetList()
         {
            
@@ -57,7 +57,7 @@ namespace MapData.BUS
         }
         public int Update(int id, string name, int idTramCuuHoa, float capacity, float maxHeight, string size, string status)
         {
-            return XeCuuHoaDAO.Instance.Update(id,name, idTramCuuHoa, capacity, maxHeight, size, status);
+            return XeCuuHoaDAO.Instance.Update(id, name, idTramCuuHoa, capacity, maxHeight, size, status);
         }
         public int Delete(int id)
         {

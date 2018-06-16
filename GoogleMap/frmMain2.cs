@@ -25,6 +25,7 @@ namespace GoogleMap
         {
             InitializeComponent();
             AnHien(false);
+            palHome.Visible = true;
         }
         
         private void btnHome_Click(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace GoogleMap
         {
             AnHien(false);
             palMap.Visible = true;
-            userControlMap1.BringToFront();
+            userControlMapBaoChay1.BringToFront();
         }
 
         private void btnQuanLy_Click(object sender, EventArgs e)
