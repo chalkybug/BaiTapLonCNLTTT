@@ -117,8 +117,8 @@
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
 
-        console.log(marker.getPosition().lat());
-        console.log(marker.getPosition().lng());
+     //   console.log(marker.getPosition().lat());
+      //  console.log(marker.getPosition().lng());
 
     })
 
@@ -148,7 +148,6 @@
 
     // end
     $("#submit").click(function () {
-
         $.ajax({
             type: 'POST',
             url: "http://localhost:8177/api/baochay",
@@ -164,11 +163,9 @@
             },
             success: function (data) {
                 alert("Gửi báo cháy thành công")
-
             },
             error: function (xhr, status, err) {
                 console.log(err + "");
-
                 alert("Gửi báo cháy lỗi")
             }
         });

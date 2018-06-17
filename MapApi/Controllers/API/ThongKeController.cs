@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MapData.BUS;
+using MapData.DTO;
 
 namespace MapApi.Controllers
 {
@@ -16,7 +17,7 @@ namespace MapApi.Controllers
         public IHttpActionResult Get()
         {
             DataTable dt = new DataTable();
-            dt = tkbus.GetData();
+            dt = ThongKeBUS.Instance.GetData();
             return Ok(dt);
         }
 

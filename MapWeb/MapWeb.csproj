@@ -133,7 +133,6 @@
     <Content Include="Views\XeCuuHoa\Index.cshtml" />
     <Content Include="Views\ThongKe\ThongKeTatCaKhu.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Notification.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\BaoChay\Index.cshtml" />
     <None Include="Web.Debug.config">

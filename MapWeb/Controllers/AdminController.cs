@@ -56,9 +56,7 @@ namespace MapWeb.Controllers
                         list = readTask.Result;
                     }
                     else //web api sent error response 
-                    {
-                        //log response status here..
-                        
+                    {                        
                         ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
                     }
                 }
@@ -86,13 +84,7 @@ namespace MapWeb.Controllers
             return View("Login");
 
         }
-
-
-        [AllowAnonymous]
-        public ActionResult Notification()
-        {
-            return View();
-        }
+        
 
         public ActionResult Logout()
         {

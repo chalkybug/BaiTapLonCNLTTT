@@ -217,20 +217,16 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaoChayController.cs" />
-    <Compile Include="Controllers\DamChayController.cs" />
+    <Compile Include="Controllers\API\BaoChayController.cs" />
+    <Compile Include="Controllers\API\DamChayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
-
-    <Compile Include="Controllers\SoXeTrongController.cs" />
-
-    <Compile Include="Controllers\TaiKhoanController.cs" />
-
-    <Compile Include="Controllers\ThongKeController.cs" />
-    <Compile Include="Controllers\TramCuuHoaController.cs" />
-    <Compile Include="Controllers\TruNuocController.cs" />
+    <Compile Include="Controllers\API\TaiKhoanController.cs" />
+    <Compile Include="Controllers\API\ThongKeController.cs" />
+    <Compile Include="Controllers\API\TramCuuHoaController.cs" />
+    <Compile Include="Controllers\API\TruNuocController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\XeCuuHoaController.cs" />
+    <Compile Include="Controllers\API\XeCuuHoaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
