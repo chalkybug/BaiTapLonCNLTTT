@@ -85,6 +85,7 @@
             this.dgvXeCuuHoa.Name = "dgvXeCuuHoa";
             this.dgvXeCuuHoa.Size = new System.Drawing.Size(1023, 174);
             this.dgvXeCuuHoa.TabIndex = 63;
+            this.dgvXeCuuHoa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvXeCuuHoa_CellClick);
             // 
             // id
             // 
@@ -280,6 +281,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(159, 49);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(145, 25);
@@ -408,6 +410,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UserControlXeCuuHoa";
             this.Size = new System.Drawing.Size(1023, 443);
+            this.Load += new System.EventHandler(this.UserControlXeCuuHoa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvXeCuuHoa)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

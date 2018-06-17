@@ -23,7 +23,12 @@ namespace GoogleMap
             btnXoa.Enabled = !e;
             btnSua.Enabled = !e;
             btnLuu.Enabled = e;
-           
+            txtDungTich.Enabled = e;
+            txtTenXe.Enabled = e;
+            txtIDTram.Enabled = e;
+            txtSize.Enabled = e;
+            txtStatus.Enabled = e;
+            txtChieuCao.Enabled = e;
         }
 
         private void loaddata()
@@ -163,7 +168,7 @@ namespace GoogleMap
         }
         private void UserControlTramCuuHoa_Load(object sender, EventArgs e)
         {
-            AnHien2(false);
+         //   AnHien2(false);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -174,6 +179,22 @@ namespace GoogleMap
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void dgvXeCuuHoa_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtID.Text = Convert.ToString(dgvXeCuuHoa.CurrentRow.Cells[0].Value);
+            txtTenXe.Text = Convert.ToString(dgvXeCuuHoa.CurrentRow.Cells[1].Value);
+            txtIDTram.Text = Convert.ToString(dgvXeCuuHoa.CurrentRow.Cells[2].Value);
+            txtDungTich.Text = Convert.ToString(dgvXeCuuHoa.CurrentRow.Cells[3].Value);
+            txtChieuCao.Text = Convert.ToString(dgvXeCuuHoa.CurrentRow.Cells[4].Value);
+            txtSize.Text = Convert.ToString(dgvXeCuuHoa.CurrentRow.Cells[5].Value);
+            txtStatus.Text = Convert.ToString(dgvXeCuuHoa.CurrentRow.Cells[6].Value);
+        }
+
+        private void UserControlXeCuuHoa_Load(object sender, EventArgs e)
+        {
+            AnHien2(false);
         }
     }
 }

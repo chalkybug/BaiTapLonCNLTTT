@@ -81,15 +81,6 @@ namespace GoogleMap
                             r.Stroke.Width = 5;
                             r.Stroke.Color = Color.SeaGreen;
                             kc.Add(r.Distance);
-                            //DataRow row;
-                            //row = dt.NewRow();
-                            //row["KC"] = kc;
-                            //dt.Rows.Add(row);
-                            //var path = OpenStreetMapProvider.Instance.GetRoute( start, end, false, false, 15);
-                            //GMapRoute router = new GMapRoute(path.Points, "Router");
-                            //router.Stroke.Width = 5;
-                            //router.Stroke.Color = Color.Yellow;
-                            //kc.Add(router.Distance);
                         }
                     }
                     catch (System.Exception ex)

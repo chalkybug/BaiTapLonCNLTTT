@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Net.Http;
+using MapData.DTO;
+
 namespace GoogleMap
 {
     public partial class UserControlThongKeBieuDo : UserControl
@@ -21,14 +23,27 @@ namespace GoogleMap
 
         private void btnThongKeThietHai_Click(object sender, EventArgs e)
         {
-            SqlConnection db = new SqlConnection(@"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=qlPCCC;Integrated Security=True");
-            SqlDataAdapter da = new SqlDataAdapter("select address,damages from DamChay where date between '" + date1.Text + "' and '" + date2.Text + "' and county=N'" + cmbKhuVuc.Text + "' ", db);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            chartThongKeThietHai.DataSource = dt;
-            chartThongKeThietHai.ChartAreas["ChartArea1"].AxisX.Title = "địa chỉ";
-            chartThongKeThietHai.Series["Series1"].XValueMember = "address";
-            chartThongKeThietHai.Series["Series1"].YValueMembers = "damages";
+            string ngay1 = date1.Text;
+            string ngay2 = date2.Text;
+            string khuvuc = cmbKhuVuc.Text;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseAddress);
+                //HTTP GET
+                var responseTask = client.GetAsync("thongke?date1=" + ngay1 + "&date2=" + ngay2 + "&khuvuc=" + khuvuc);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<DataTable>();
+                    readTask.Wait();
+                    var thiethais = readTask.Result;
+                    chartThongKeThietHai.DataSource = thiethais;
+                    chartThongKeThietHai.ChartAreas["ChartArea1"].AxisX.Title = "địa chỉ";
+                    chartThongKeThietHai.Series["Series1"].XValueMember = "address";
+                    chartThongKeThietHai.Series["Series1"].YValueMembers = "damages";
+                }
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

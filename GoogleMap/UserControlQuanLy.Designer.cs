@@ -38,11 +38,11 @@
             this.palTramCuuHoa = new System.Windows.Forms.Panel();
             this.palDamChay = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.userControlTruNuoc11 = new GoogleMap.userControlTruNuoc1();
             this.userControlTramCuuHoa1 = new GoogleMap.UserControlTramCuuHoa();
             this.userControlDamChay1 = new GoogleMap.UserControlDamChay();
             this.userControlXeCuuHoa1 = new GoogleMap.UserControlXeCuuHoa();
             this.userControlXeCuuHoa2 = new GoogleMap.UserControlXeCuuHoa();
-            this.userControlTruNuoc11 = new GoogleMap.userControlTruNuoc1();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -181,6 +181,15 @@
             this.panel1.Size = new System.Drawing.Size(975, 471);
             this.panel1.TabIndex = 29;
             // 
+            // userControlTruNuoc11
+            // 
+            this.userControlTruNuoc11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.userControlTruNuoc11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlTruNuoc11.Location = new System.Drawing.Point(0, 0);
+            this.userControlTruNuoc11.Name = "userControlTruNuoc11";
+            this.userControlTruNuoc11.Size = new System.Drawing.Size(975, 471);
+            this.userControlTruNuoc11.TabIndex = 4;
+            // 
             // userControlTramCuuHoa1
             // 
             this.userControlTramCuuHoa1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -216,15 +225,6 @@
             this.userControlXeCuuHoa2.Name = "userControlXeCuuHoa2";
             this.userControlXeCuuHoa2.Size = new System.Drawing.Size(975, 471);
             this.userControlXeCuuHoa2.TabIndex = 3;
-            // 
-            // userControlTruNuoc11
-            // 
-            this.userControlTruNuoc11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.userControlTruNuoc11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlTruNuoc11.Location = new System.Drawing.Point(0, 0);
-            this.userControlTruNuoc11.Name = "userControlTruNuoc11";
-            this.userControlTruNuoc11.Size = new System.Drawing.Size(975, 471);
-            this.userControlTruNuoc11.TabIndex = 4;
             // 
             // UserControlQuanLy
             // 

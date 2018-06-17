@@ -166,7 +166,7 @@ namespace GoogleMap
         }
         private void UserControlTruNuoc_Load(object sender, EventArgs e)
         {
-            AnHien2(false);
+           // AnHien2(false);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -178,86 +178,21 @@ namespace GoogleMap
         {
             Application.Exit();
         }
-        private void dgvTruNuoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        
+        private void dgvTruNuoc_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            txtID.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells["id"].Value);
-            txtTP.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells["city"].Value);
-            txtQH.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells["county"]);
-            txtDC.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells["address"]);
-
-            txtLat.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells["lat"].Value);
-            txtLng.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells["lng"].Value);
-            
+            txtID.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells[0].Value);
+            txtTP.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells[1].Value);
+            txtQH.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells[2].Value);
+            txtDC.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells[3].Value);
+            txtLat.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells[4].Value);
+            txtLng.Text = Convert.ToString(dgvTruNuoc.CurrentRow.Cells[5].Value);
         }
 
-        private void txtID_TextChanged(object sender, EventArgs e)
+        private void userControlTruNuoc1_Load(object sender, EventArgs e)
         {
-
+            AnHien2(false);
         }
 
-        private void dgvTruNuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTHietHai_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbltp_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDC_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbldc_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLng_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLat_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtQH_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTP_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblQuan_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

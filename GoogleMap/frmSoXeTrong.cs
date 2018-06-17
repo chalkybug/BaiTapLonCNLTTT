@@ -18,28 +18,27 @@ namespace GoogleMap
         public string baseAddress = "http://localhost:8177/api/";
         List<string> list = new List<string>();
         string ma;
-
-        List<XeCuuHoa> dsXeCuuHoa = new List<XeCuuHoa>();
         public void loaddata(string id)
         {
+            List<XeCuuHoa> listXe = new List<XeCuuHoa>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(baseAddress);
                 //HTTP GET
-                var responseTask = client.GetAsync("xecuuhoa");
+                var responseTask = client.GetAsync("XeCuuHoa");
                 responseTask.Wait();
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
                     var readTask = result.Content.ReadAsAsync<List<XeCuuHoa>>();
                     readTask.Wait();
-                    dsXeCuuHoa = readTask.Result;
-                    
+                    listXe = readTask.Result;
+
                 }
             }
-            dgvSoXeTrong.DataSource = dsXeCuuHoa.Where(x => x.status == "free").ToList();
+            List<XeCuuHoa> xeCuuHoaTrong = listXe.Where(x => x.status == "free" && x.idTramCuuHoa == Convert.ToInt32(id)).ToList();
+            dgvSoXeTrong.DataSource = xeCuuHoaTrong;
         }
-
         string idd;
         public frmSoXeTrong(string id)
         {
@@ -49,25 +48,25 @@ namespace GoogleMap
         }
         private void btnGoiXe_Click(object sender, EventArgs e)
         {
-            XeCuuHoa xe = dsXeCuuHoa.Where(x => x.id == int.Parse(ma)).FirstOrDefault();
-            xe.status = "busy";
-
-            using (var client = new HttpClient())
+            foreach(var item in list)
             {
-                client.BaseAddress = new Uri(baseAddress);
-                var postTask = client.PutAsJsonAsync<XeCuuHoa>("xecuuhoa", xe);
-
-                postTask.Wait();
-
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
+                int id1 = int.Parse(item);
+                SoXeTrong soxetrong = new SoXeTrong(){id = id1};
+                using (var client = new HttpClient())
                 {
-                    MessageBox.Show("gọi xe thành công");
-                    loaddata(idd);
+                    client.BaseAddress = new Uri(baseAddress);
+                    var postTask = client.PutAsJsonAsync<SoXeTrong>("soxetrong", soxetrong);
+
+                    postTask.Wait();
+
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("gọi xe thành công");
+                        loaddata(idd);
+                    }
                 }
             }
-
-
         }
 
         private void dgvSoXeTrong_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -79,6 +78,7 @@ namespace GoogleMap
             row.Cells[3].Value = (Convert.ToString(dgvSoXeTrong.CurrentRow.Cells[3].Value));
             row.Cells[4].Value = (Convert.ToString(dgvSoXeTrong.CurrentRow.Cells[4].Value));
             row.Cells[5].Value = (Convert.ToString(dgvSoXeTrong.CurrentRow.Cells[5].Value));
+            row.Cells[6].Value = (Convert.ToString(dgvSoXeTrong.CurrentRow.Cells[6].Value));
             ma = Convert.ToString(row.Cells[0].Value);
             string text = list.Find(item => item == ma);
             if (text == null)
