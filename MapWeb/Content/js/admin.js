@@ -502,14 +502,15 @@ function FillTable(name, address, phone, distance, cars, addressDamChay) {
 
     var str = "";
     var size = RecommendXeCuuHoa(addressDamChay);
+
     cars.forEach(element => {
         var info = "Size:  " + element.size + " | Capacity:  " + element.capacity + " | MaxHeight:  " + element.maxHeight;
         if (element.status == 'free' && element.size == size) {
-            str += "<span data-toggle='modal' data-target='#modalCar'> <a id=" + element.id + " data-toggle='tooltip'data-placement='top' title='" + info + "' class='badge badge-success' onclick=pickCar(this)>" + element.name + "</a></span>";
+            str += "<span data-toggle='modal' data-target='#modalFreelCar'> <a id=" + element.id + " data-toggle='tooltip'data-placement='top' title='" + info + "' class='badge badge-success' onclick=pickCar(this)>" + element.name + "</a></span>";
         } else if (element.status == 'busy') {
-            str += "<span data-toggle='modal' data-target='#modalCar'> <a id=" + element.id + " data-toggle='tooltip' data-placement='top' title='" + info + "' class='badge badge-danger' onclick=pickCar(this)>" + element.name + "</a></span>";
+            str += "<span data-toggle='modal' data-target='#modalBusyCar'> <a id=" + element.id + " data-toggle='tooltip' data-placement='top' title='" + info + "' class='badge badge-danger' onclick=pickCar(this)>" + element.name + "</a></span>";
         } else if (element.status == 'free') {
-            str += "<span data-toggle='modal' data-target='#modalCar'> <a id=" + element.id + " data-toggle='tooltip'data-placement='top' title='" + info + "' class='badge badge-primary' onclick=pickCar(this)> " + element.name + "</a></span>";
+            str += "<span data-toggle='modal' data-target='#modalFreelCar'> <a id=" + element.id + " data-toggle='tooltip'data-placement='top' title='" + info + "' class='badge badge-primary' onclick=pickCar(this)> " + element.name + "</a></span>";
         }
 
     });
@@ -528,9 +529,17 @@ function pickCar(item) {
         success: function (data) {
             data.forEach(element => {
                 if (element.id == item.id) {
-                    $('#pickCarId').val(element.id);
-                    $('#pickCarName').val(element.name);
-                    $('#pickCarSize').val(element.size);
+                    $('#pickFreeCarId').val(element.id);
+                    $('#pickFreeCarName').val(element.name);
+                    $('#pickFreeCarSize').val(element.size);
+                    $('#pickFreeCarmaxHeight').val(element.maxHeight);
+                    $('#pickFreeCarCapacity').val(element.capacity);
+
+                    $('#pickBusyCarId').val(element.id);
+                    $('#pickBusyCarName').val(element.name);
+                    $('#pickBusyCarSize').val(element.size);
+                    $('#pickBusyCarmaxHeight').val(element.maxHeight);
+                    $('#pickBusyCarCapacity').val(element.capacity);
                 }
             });
 
@@ -538,6 +547,44 @@ function pickCar(item) {
     });
 
 
+}
+
+function CallFreeCar() {
+    var id =  $('#pickFreeCarId').val();
+    console.log(id);
+    $.ajax({
+        type: "PUT",
+        url: 'http://localhost:8177/api/xecuuhoa/CallCar?id='+id+'&status=busy',
+        dataType: "text",
+        success: function (response) {
+            console.log("success edit");
+           
+        }
+    });
+    var node = $("#"+id+"");
+
+    node.attr("class", "badge badge-danger");
+    node.parent().attr("data-target", "#modalBusyCar");
+
+}
+
+function CallBusyCar() {
+    var id = $('#pickBusyCarId').val();
+    console.log(id);
+    $.ajax({
+        type: "PUT",
+        url: 'http://localhost:8177/api/xecuuhoa/CallCar?id=' + id + '&status=free',
+        dataType: "text",
+        success: function (response) {
+            console.log("success edit");
+           
+        }
+    });
+
+    var node = $("#" + id + "");
+
+    node.attr("class", "badge badge-primary");
+    node.parent().attr("data-target", "#modalFreeCar");
 }
 
 function sortTable(n) {

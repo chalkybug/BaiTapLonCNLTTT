@@ -52,7 +52,7 @@
         </div>
 
         <!-- The Modal -->
-        <div class="modal" id="modalCar">
+        <div class="modal" id="modalFreelCar">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -69,33 +69,91 @@
 
                         <div class="form-group">
                             <small id="helpId" class="form-text text-muted">ID</small>
-                            <input type="text" class="form-control" id="pickCarId" aria-describedby="helpId" placeholder="ID" readonly>
+                            <input type="text" class="form-control" id="pickFreeCarId" aria-describedby="helpId" placeholder="ID" readonly>
                         </div>
-                        <!-- county-->
+                        
 
                         <div class="form-group">
                             <small id="helpId" class="form-text text-muted">Name</small>
-                            <input type="text" class="form-control" id="pickCarName" aria-describedby="helpId" placeholder="Name" readonly>
+                            <input type="text" class="form-control" id="pickFreeCarName" aria-describedby="helpId" placeholder="Name" readonly>
 
                         </div>
-                        <!-- address-->
+                     
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Capacity</small>
+                            <input type="text" class="form-control" id="pickFreeCarCapacity" aria-describedby="helpId" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Max Height</small>
+                            <input type="text" class="form-control" id="pickFreeCarmaxHeight" aria-describedby="helpId" readonly>
+                        </div>
+
 
                         <div class="form-group">
                             <small id="helpId" class="form-text text-muted">Size</small>
-                            <input type="text" class="form-control" id="pickCarSize" aria-describedby="helpId" placeholder="Size" readonly>
+                            <input type="text" class="form-control" id="pickFreeCarSize" aria-describedby="helpId" placeholder="Size" readonly>
                         </div>
-                        <!-- lat-->
+                     
 
                     </div>
 
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-
+                        <button onclick="CallFreeCar()" type="button" class="btn btn-success" data-dismiss="modal">Gọi Xe</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
 
+            </div>
+        </div>
+
+        <div class="modal" id="modalBusyCar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"> THÔNG TIN XE ĐƯỢC CHỌN</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <br>
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">ID</small>
+                            <input type="text" class="form-control" id="pickBusyCarId" aria-describedby="helpId" placeholder="ID" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Name</small>
+                            <input type="text" class="form-control" id="pickBusyCarName" aria-describedby="helpId" placeholder="Name" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Capacity</small>
+                            <input type="text" class="form-control" id="pickBusyCarCapacity" aria-describedby="helpId" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Max Height</small>
+                            <input type="text" class="form-control" id="pickBusyCarmaxHeight" aria-describedby="helpId" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <small id="helpId" class="form-text text-muted">Size</small>
+                            <input type="text" class="form-control" id="pickBusyCarSize" aria-describedby="helpId" placeholder="Size" readonly>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button onclick="CallBusyCar()" type="button" class="btn btn-success" data-dismiss="modal">Thu Xe</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
