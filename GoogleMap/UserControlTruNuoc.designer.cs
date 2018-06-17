@@ -96,8 +96,10 @@
             // 
             // dgvTruNuoc
             // 
+            this.dgvTruNuoc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTruNuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTruNuoc.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvTruNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTruNuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -106,13 +108,12 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            this.dgvTruNuoc.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTruNuoc.Location = new System.Drawing.Point(0, 231);
             this.dgvTruNuoc.Name = "dgvTruNuoc";
             this.dgvTruNuoc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvTruNuoc.Size = new System.Drawing.Size(968, 261);
             this.dgvTruNuoc.TabIndex = 72;
-            this.dgvTruNuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTruNuoc_CellContentClick);
+            this.dgvTruNuoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTruNuoc_CellClick_1);
             // 
             // groupBox1
             // 
@@ -137,115 +138,103 @@
             this.groupBox1.TabIndex = 73;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin Trụ Nước";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lblTHietHai
             // 
             this.lblTHietHai.AutoSize = true;
-            this.lblTHietHai.Location = new System.Drawing.Point(646, 109);
+            this.lblTHietHai.Location = new System.Drawing.Point(621, 99);
             this.lblTHietHai.Name = "lblTHietHai";
             this.lblTHietHai.Size = new System.Drawing.Size(35, 19);
             this.lblTHietHai.TabIndex = 84;
             this.lblTHietHai.Text = "Lng:";
-            this.lblTHietHai.Click += new System.EventHandler(this.lblTHietHai_Click);
             // 
             // lbltp
             // 
             this.lbltp.AutoSize = true;
-            this.lbltp.Location = new System.Drawing.Point(649, 52);
+            this.lbltp.Location = new System.Drawing.Point(624, 42);
             this.lbltp.Name = "lbltp";
             this.lbltp.Size = new System.Drawing.Size(32, 19);
             this.lbltp.TabIndex = 80;
             this.lbltp.Text = "Lat:";
-            this.lbltp.Click += new System.EventHandler(this.lbltp_Click);
             // 
             // txtDC
             // 
-            this.txtDC.Location = new System.Drawing.Point(444, 102);
+            this.txtDC.Location = new System.Drawing.Point(419, 92);
             this.txtDC.Name = "txtDC";
             this.txtDC.Size = new System.Drawing.Size(145, 26);
             this.txtDC.TabIndex = 87;
-            this.txtDC.TextChanged += new System.EventHandler(this.txtDC_TextChanged);
             // 
             // lbldc
             // 
             this.lbldc.AutoSize = true;
-            this.lbldc.Location = new System.Drawing.Point(379, 109);
+            this.lbldc.Location = new System.Drawing.Point(354, 99);
             this.lbldc.Name = "lbldc";
             this.lbldc.Size = new System.Drawing.Size(54, 19);
             this.lbldc.TabIndex = 83;
             this.lbldc.Text = "Địa chỉ:";
-            this.lbldc.Click += new System.EventHandler(this.lbldc_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(349, 48);
+            this.label2.Location = new System.Drawing.Point(324, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 19);
             this.label2.TabIndex = 82;
             this.label2.Text = "Quận, Huyện:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 48);
+            this.label1.Location = new System.Drawing.Point(63, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 19);
             this.label1.TabIndex = 85;
             this.label1.Text = "ID:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtLng
             // 
-            this.txtLng.Location = new System.Drawing.Point(702, 102);
+            this.txtLng.Location = new System.Drawing.Point(677, 92);
             this.txtLng.Name = "txtLng";
             this.txtLng.Size = new System.Drawing.Size(196, 26);
             this.txtLng.TabIndex = 91;
-            this.txtLng.TextChanged += new System.EventHandler(this.txtLng_TextChanged);
             // 
             // txtLat
             // 
-            this.txtLat.Location = new System.Drawing.Point(702, 45);
+            this.txtLat.Location = new System.Drawing.Point(677, 35);
             this.txtLat.Name = "txtLat";
             this.txtLat.Size = new System.Drawing.Size(196, 26);
             this.txtLat.TabIndex = 90;
-            this.txtLat.TextChanged += new System.EventHandler(this.txtLat_TextChanged);
             // 
             // txtQH
             // 
-            this.txtQH.Location = new System.Drawing.Point(444, 45);
+            this.txtQH.Location = new System.Drawing.Point(419, 35);
             this.txtQH.Name = "txtQH";
             this.txtQH.Size = new System.Drawing.Size(145, 26);
             this.txtQH.TabIndex = 89;
-            this.txtQH.TextChanged += new System.EventHandler(this.txtQH_TextChanged);
             // 
             // txtTP
             // 
-            this.txtTP.Location = new System.Drawing.Point(135, 102);
+            this.txtTP.Location = new System.Drawing.Point(110, 92);
             this.txtTP.Name = "txtTP";
             this.txtTP.Size = new System.Drawing.Size(145, 26);
             this.txtTP.TabIndex = 88;
-            this.txtTP.TextChanged += new System.EventHandler(this.txtTP_TextChanged);
             // 
             // lblQuan
             // 
             this.lblQuan.AutoSize = true;
-            this.lblQuan.Location = new System.Drawing.Point(47, 109);
+            this.lblQuan.Location = new System.Drawing.Point(22, 99);
             this.lblQuan.Name = "lblQuan";
             this.lblQuan.Size = new System.Drawing.Size(76, 19);
             this.lblQuan.TabIndex = 81;
             this.lblQuan.Text = "Thành phố:";
-            this.lblQuan.Click += new System.EventHandler(this.lblQuan_Click);
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(135, 45);
+            this.txtID.Enabled = false;
+            this.txtID.Location = new System.Drawing.Point(110, 35);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(145, 26);
             this.txtID.TabIndex = 86;
-            this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             // 
             // btnHuy
             // 
@@ -358,6 +347,7 @@
             this.Controls.Add(this.dgvTruNuoc);
             this.Name = "userControlTruNuoc1";
             this.Size = new System.Drawing.Size(968, 492);
+            this.Load += new System.EventHandler(this.userControlTruNuoc1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTruNuoc)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

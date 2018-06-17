@@ -109,7 +109,7 @@
     <Compile Include="frmSoXeTrong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSoXeTrong.Designer.cs">
+    <Compile Include="frmSoXeTrong.designer.cs">
       <DependentUpon>frmSoXeTrong.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -165,7 +165,7 @@
     <Compile Include="UserControlThongKeBieuDo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlThongKeBieuDo.Designer.cs">
+    <Compile Include="UserControlThongKeBieuDo.designer.cs">
       <DependentUpon>UserControlThongKeBieuDo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlThongKeDanhSach.cs">
